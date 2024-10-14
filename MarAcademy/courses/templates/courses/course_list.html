@@ -1,0 +1,23 @@
+{% extends 'courses/base.html' %} {% block content %}
+<h1 class="page-title">Available Courses</h1>
+<div class="courses-grid">
+  {% for course in courses %}
+  <div class="course-card">
+    <img src="{{ course.image.url }}" alt="{{ course.title }}" />
+    <h3>{{ course.title }}</h3>
+    <p>{{ course.description }}</p>
+    <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+
+    {% if user not in course.enrolled_users.all %}
+    <a href="{% url 'courses:enroll_in_course' course.pk %}" class="btn-enrol"
+      >Enroll</a
+    >
+    {% else %}
+    <a href="{% url 'courses:course_detail' course.pk %}" class="btn-prima">
+      Go To Course</a
+    >
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

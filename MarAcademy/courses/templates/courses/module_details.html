@@ -1,0 +1,20 @@
+{% extends 'courses/base.html' %} {% block content %}
+<div class="module-container">
+  <h1>{{ module.title }}</h1>
+  <p>{{ module.description }}</p>
+
+  <h2>Lessons</h2>
+
+  <div class="lessons-grid">
+    {% for lesson in module.lessons.all %}
+    <a href="{% url 'courses:lesson_details' lesson.pk %}" class="lesson-card">
+      <div class="lesson-content">
+        <p class="lesson-title">{{ lesson.title }}</p>
+      </div>
+    </a>
+    {% empty %}
+    <p>No lessons available</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

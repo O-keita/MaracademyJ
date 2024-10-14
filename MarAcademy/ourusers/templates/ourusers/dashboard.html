@@ -1,0 +1,75 @@
+{% extends "ourusers/base.html" %} {% block content %}
+
+<div class="stats-grid">
+  <!-- Stats Overview -->
+  <div class="stat-box">
+    <h3>4.0</h3>
+    <p>Current GPA</p>
+  </div>
+  <div class="stat-box">
+    <h3>{{ enrolled_courses }}</h3>
+    <p>Courses Enrolled</p>
+  </div>
+  <div class="stat-box">
+    <h3>12</h3>
+    <p>Completed Assignments</p>
+  </div>
+  <div class="stat-box">
+    <h3>4</h3>
+    <p>Upcoming Deadlines</p>
+  </div>
+</div>
+
+<div class="chart-container">
+  <canvas id="gpaChart"></canvas>
+</div>
+
+<h2>Course Progress</h2>
+<div class="stats-grid">
+  <div class="stat-box">
+    <h3>67%</h3>
+    <p>Introduction to Python</p>
+  </div>
+  <div class="stat-box">
+    <h3>60%</h3>
+    <p>Web Development</p>
+  </div>
+</div>
+{% endblock %} {% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // GPA Chart
+  var ctx = document.getElementById("gpaChart").getContext("2d");
+  var gpaChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: [
+        "Semester 1",
+        "Semester 2",
+        "Semester 3",
+        "Semester 4",
+        "Semester 5",
+        "Semester 6",
+        "Semester 7",
+        "Semester 8",
+      ],
+      datasets: [
+        {
+          label: "GPA",
+          data: [3.6, 3.7, 3.9, 4.0, 4.2],
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: false, max: 5.0 },
+      },
+    },
+  });
+</script>
+{% endblock %}

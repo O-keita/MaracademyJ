@@ -1,0 +1,33 @@
+{% extends 'courses/base.html' %} {% block content %}
+<div class="dashboard-main">
+  <h1>{{ course.title }}</h1>
+  {% if course.image %}
+  <img
+    src="{{ course.image.url }}"
+    alt="{{ course.title }}"
+    class="course-image"
+  />
+  {% endif %}
+  <p class="course-description">{{ course.description }}</p>
+
+  <h2>Modules</h2>
+  <ul class="module-list">
+    {% for module in course.modules.all %}
+    <li class="module-item">
+      <a href="{% url 'courses:module_details' module.pk %}">
+        {% if module.image %}
+        <img
+          src="{{ module.image.url }}"
+          alt="{{ module.title }}"
+          class="module-image"
+        />
+        {% endif %}
+        <span>{{ module.title }}</span>
+      </a>
+    </li>
+    {% empty %}
+    <li>No modules available</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
