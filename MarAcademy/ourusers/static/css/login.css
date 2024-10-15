@@ -9,14 +9,12 @@
 body {
   display: flex;
   justify-content: center;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFGa4GsojdfUiv-vwf6drQ_rYg54yPR4tMPA&s");
+  background-repeat: no-repeat;
   align-items: center;
-  height: 100vh;
-  background: url("../images/bg.png");
-  color: #fff;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  height: 100vh;
 }
 
 h2 {
@@ -31,7 +29,7 @@ h2 {
   padding: 40px;
   width: 350px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -44,6 +42,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  color: #f2f2f2;
+  font-weight: 600;
 }
 
 input {
@@ -54,7 +54,7 @@ input {
   font-size: 16px;
   transition: all 0.3s ease;
   background: transparent;
-  color: #333;
+  color: white;
 }
 
 input:focus {

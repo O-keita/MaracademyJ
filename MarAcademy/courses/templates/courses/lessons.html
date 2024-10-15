@@ -1,20 +1,25 @@
 {% extends 'courses/base.html' %} {% block content %}
-<h1>{{ lesson.title }}</h1>
+<div class="lesson-container">
+  <h1 class="lesson-title">{{ lesson.title }}</h1>
+  <p class="lesson-description">{{ lesson.description }}</p>
 
-<p>{{ lesson.description }}</p>
-<p>{{ lesson.content }}</p>
+  {% if lesson.video_file %}
+  <div class="video-container">
+    <video controls>
+      <source src="{{ lesson.video_file.url }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  {% elif lesson.video_url %} {% with video_id=lesson.video_url|slice:"-11:" %}
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/{{ video_id }}"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </div>
+  {% endwith %} {% endif %}
 
-{% if lesson.video_file %}
-<video width="560" height="315" controls>
-  <source src="{{ lesson.video_file.url }}" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-{% elif lesson.video_url %} {% with video_id=lesson.video_url|slice:"-11:" %}
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/{{ video_id }}"
-  frameborder="0"
-  allowfullscreen
-></iframe>
-{% endwith %} {% endif %} {% endblock %}
+  <div class="lesson-content">{{ lesson.content|safe }}</div>
+</div>
+{% endblock %}

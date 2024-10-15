@@ -7,9 +7,9 @@
 
   <div class="lessons-grid">
     {% for lesson in module.lessons.all %}
-    <a href="{% url 'courses:lesson_details' lesson.pk %}" class="lesson-card">
-      <div class="lesson-content">
-        <p class="lesson-title">{{ lesson.title }}</p>
+    <a href="{% url 'courses:lesson_details' lesson.pk %}" class="lessons-card">
+      <div class="lessons-content">
+        <p class="lessons-title">{{ lesson.title }}</p>
       </div>
     </a>
     {% empty %}
