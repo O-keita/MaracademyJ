@@ -1,0 +1,28 @@
+{% extends 'instructors/base.html' %} {% block content %}
+<div class="container">
+  <a href="{% url 'courses:course_create' %}" class="btn">Add New Course</a>
+
+  <ul>
+    {% for course in courses %}
+    <li>
+      {{ course.title }} -
+      <a href="{% url 'courses:course_update' course.pk %}" class="btn btn-edit"
+        >Edit Course</a
+      >
+
+      <form
+        action="{% url 'courses:course_delete' course.pk %}"
+        method="post"
+        style="display: inline"
+      >
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+    {% empty %}
+    <li>No courses available.</li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

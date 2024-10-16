@@ -30,6 +30,13 @@
         <a href="{% url 'dashboard' %}">
           <i class="fas fa-home"></i> Dashboard
         </a>
+
+        {% if request.user.is_instructor %}
+
+        <a href="{% url 'courses:course_list' %}">
+          <i class="fas fa-user"></i> Admin
+        </a>
+        {% endif %}
         <a href="{% url 'courses:courses' %}">
           <i class="fas fa-book"></i> Courses
         </a>
@@ -37,7 +44,9 @@
         <a href=""> <i class="fas fa-chart-line"></i> Progress & Grades </a>
         <a href="#"> <i class="fas fa-bell"></i> Notifications </a>
         <a href="#"> <i class="fas fa-cogs"></i> Settings </a>
-        <a href="#"> <i class="fas fa-sign-out-alt"></i> Logout </a>
+        <a href="{% url 'logout' %}">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
       </div>
 
       <!-- Main Content -->

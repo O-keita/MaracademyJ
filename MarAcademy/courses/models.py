@@ -6,7 +6,7 @@ User = get_user_model()
 # Create your models here.
 class Course(models.Model):
     title = models.CharField(max_length=100)
-    instructor = models.CharField(max_length=100, blank=True, null=True) 
+    instructor = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True) 
     description = models.TextField()
     image = models.ImageField(upload_to='course_images/', max_length=500, blank=True, null=True)
     enrolled_users = models.ManyToManyField(User, related_name='enrolled_courses', blank=True)
@@ -21,7 +21,7 @@ class Module(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='course_images/', max_length=500, blank=True, null=True)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course,  related_name='modules', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -30,7 +30,7 @@ class Module(models.Model):
     
 
 class Lesson(models.Model):
-    module = models.ForeignKey(Module, on_delete=models.CASCADE)
+    module = models.ForeignKey(Module,related_name='lessons', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.TextField()
     description = models.TextField(null=True, blank=True)

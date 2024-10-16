@@ -1,0 +1,32 @@
+{% extends 'instructors/base.html' %} {% block content %}
+<div class="container">
+  <h1>{% if form.instance.pk %}Edit Course{% else %}Add Course{% endif %}</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
+  <a href="{% url 'courses:course_list' %}">Cancel</a>
+</div>
+
+{% if form.instance.pk %}
+<!-- Only show this section if the course already exists (i.e., pk is not None) -->
+<div class="modules">
+  <h2>Modules for {{ form.instance.title }}</h2>
+  <a
+    href="{% url 'courses:module_create' form.instance.pk %}"
+    class="btn btn-add"
+    >Add Module</a
+  >
+  <ul>
+    {% for module in modules %}
+    <a href="{% url 'courses:module_update' module.pk %}" class="module"
+      >{{ module.title }}</a
+    >
+    {% empty %}
+    <li>No modules available for this course.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %} {% endblock %}

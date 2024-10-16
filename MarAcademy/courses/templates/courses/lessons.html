@@ -21,5 +21,17 @@
   {% endwith %} {% endif %}
 
   <div class="lesson-content">{{ lesson.content|safe }}</div>
+
+  <div class="navigation">
+    {% if lesson.pk > lesson_list.first.pk %}
+    <a href="{% url 'courses:lesson_details' lesson.pk|add:-1 %}"
+      >Previous Lesson</a
+    >
+    {% endif %} {% if lesson.pk < lesson_list.last.pk %}
+    <a href="{% url 'courses:lesson_details' lesson.pk|add:1 %}">Next Lesson</a>
+
+    {% endif %}
+  </div>
+
+  {% endblock %}
 </div>
-{% endblock %}
