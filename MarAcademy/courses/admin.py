@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Course, Module, Lesson
+from .models import Course, Module, Lesson, Assignment,AssignmentRequirement
 
 class ModuleInline(admin.TabularInline):
     model = Module
@@ -36,3 +36,5 @@ class LessonAdmin(admin.ModelAdmin):
     )
 
 
+admin.site.register(Assignment)
+admin.site.register(AssignmentRequirement)

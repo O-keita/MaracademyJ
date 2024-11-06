@@ -26,23 +26,28 @@ def course_detail(request, pk):
     return render(request, 'courses/course_details.html', {'course': course})
 
 @login_required
-def module_details(request, pk): 
+def module_details(request, pk):
 
     module = get_object_or_404(Module, pk=pk)
 
+    course_id = module.course.id 
+
     lessons = Lesson.objects.filter(module=module) 
 
-    return render(request, 'courses/module_details.html', {'module': module, 'lessons': lessons})
+    return render(request, 'courses/module_details.html', {'module': module, 'lessons': lessons, 'course_id': course_id})
 
 @login_required
 def lesson_detail(request, pk):
 
     lesson = get_object_or_404(Lesson, pk=pk)
+
+    course_id = lesson.module.course.id 
     lesson_list = Lesson.objects.all()  
 
     return render(request, 'courses/lessons.html',
                    {'lesson': lesson,
-                     'lesson_list': lesson_list})
+                     'lesson_list': lesson_list,
+                     'course_id': course_id})
 
 
 

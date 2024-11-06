@@ -1,0 +1,64 @@
+{% extends 'ourusers/base.html' %} {% load static %} {% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/assignment.css' %}" /> 
+
+{% endblock %} {% block content %}
+
+<div class="assignment-container">
+
+    <div class="assignment">
+
+
+        <div class="assignment-title">
+    
+        <h2>Assignment: Building Your First Web App</h2>
+    
+        <div class="assignment-info">
+    
+            <p><span>Due Date:</span> May 1, 2023</p>
+            <p><span>Points:</span> 10</p>
+            <p><span>Submission Format:</span> Github Repository Link</p>
+        </div>
+    
+        <div class="assignment-description">
+
+            <h3>Description:</h3>
+            <p>In this assignment, you will apply the concepts you've learned in the course to build a simple web application. You'll create a personal portfolio website
+                that showcases your projects and skills.</p>
+        </div>
+    
+             <div class="assignment-requirements">
+    
+                <h3>Requirements:</h3>
+                <ol class="assignment-steps">
+                    <li>Create a personal portfolio website using HTML, CSS, and basic JavaScript.</li>
+                    <li>Use semantic HTML elements and CSS to structure the website.</li>
+                    <li>Use JavaScript to add interactivity to the website.</li>
+                </ol>
+             </div>
+             <div class="resourses">
+    
+                <h3>Resources:</h3>
+                <ul>
+                    <li><a href="">Introduction to html and css</a></li>
+                    <li><a href="">Google</a></li>
+                    <li><a href="">StackOverflow</a></li>
+                </ul>
+            </div>
+             <div class="submission">
+    
+                <h3>Submission:</h3>
+                <p>Submit a link to your GitHub repository containing the completed assignment.</p>
+                <a href="">Submit Assignment</a>
+             </div>
+        </div>
+    
+    
+    
+    </div>
+ 
+</div>
+
+
+
+{% endblock %}

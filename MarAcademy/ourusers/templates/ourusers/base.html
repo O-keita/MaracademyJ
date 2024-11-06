@@ -4,74 +4,132 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MarAcademy Dashboard</title>
-
+    <title>{% block title %}MarAcademy{% endblock %}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    {% block extra_css %}{% endblock %}
   </head>
   <body>
     <div class="dashboard-container">
-      <!-- Sidebar -->
-      <div class="sidebar" id="sidebar">
-        <h2 style="color: #fff">MarAcademy</h2>
-        {% if user.profile_picture %}
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h2>MarAcademy</h2>
+          {% if user.profile_picture %}
+          <img
+            src="{{ user.profile_picture.url }}"
+            alt="{{ user.get_username }}'s profile picture"
+            class="user-avatar"
+          />
+          {% else %}
+          <img
+            src="{% static 'images/default.webp' %}"
+            alt="Default profile picture"
+            class="user-avatar"
+          />
+          {% endif %}
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li
+              class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}"
+            >
+              <a href="{% url 'dashboard' %}"
+                ><i class="fas fa-home"></i> Dashboard</a
+              >
+            </li>
+            {% if request.user.is_instructor %}
+            <li
+              class="{% if request.resolver_match.url_name == 'course_list' %}active{% endif %}"
+            >
+              <a href="{% url 'courses:course_list' %}"
+                ><i class="fas fa-user"></i> Admin</a
+              >
+            </li>
+            {% endif %}
+            <li
+              class="{% if request.resolver_match.url_name == 'courses' %}active{% endif %}"
+            >
+              <a href="{% url 'courses:courses' %}"
+                ><i class="fas fa-book"></i> Courses</a
+              >
+            </li>
+  
+            <li
+              class="{% if request.resolver_match.url_name == 'progress' %}active{% endif %}"
+            >
+              <a href="#"
+                ><i class="fas fa-chart-line"></i> Progress & Grades</a
+              >
+            </li>
+            <li
+              class="{% if request.resolver_match.url_name == 'notifications' %}active{% endif %}"
+            >
+              <a href="#"><i class="fas fa-bell"></i> Notifications</a>
+            </li>
+            <li
+              class="{% if request.resolver_match.url_name == 'settings' %}active{% endif %}"
+            >
+              <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="{% url 'logout' %}" class="logout-btn"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+        </div>
+      </aside>
+      <main class="main-content">
 
-        <img src="{{ user.profile_picture.url }}" alt="User Image" />
 
-        {% else %}
 
-        <img src="{% static 'images/default.webp' %}" alt="" />
-
-        {% endif %}
-
-        <a href="{% url 'dashboard' %}">
-          <i class="fas fa-home"></i> Dashboard
-        </a>
-
-        {% if request.user.is_instructor %}
-
-        <a href="{% url 'courses:course_list' %}">
-          <i class="fas fa-user"></i> Admin
-        </a>
-        {% endif %}
-        <a href="{% url 'courses:courses' %}">
-          <i class="fas fa-book"></i> Courses
-        </a>
-        <a href=""> <i class="fas fa-tasks"></i> Assignments </a>
-        <a href=""> <i class="fas fa-chart-line"></i> Progress & Grades </a>
-        <a href="#"> <i class="fas fa-bell"></i> Notifications </a>
-        <a href="#"> <i class="fas fa-cogs"></i> Settings </a>
-        <a href="{% url 'logout' %}">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-      </div>
-
-      <!-- Main Content -->
-      <div class="main-content">
-        <div class="dashboard-header">
+        <header class="main-header">
           <h1>Welcome, {{ user.get_username }}</h1>
-          <button class="menu-toggle" id="menu-toggle">
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
           </button>
-        </div>
+        </header>
 
-        <!-- Dynamic content from child templates -->
-        {% block content %}{% endblock %}
+        <div class="preloader" id="preloader">
+          <div class="spinner"></div>
       </div>
+        {% block content %}{% endblock %}
+      </main>
     </div>
-
     <script>
-      document
-        .getElementById("menu-toggle")
-        .addEventListener("click", function () {
-          const sidebar = document.getElementById("sidebar");
+
+    window.addEventListener('load', function() {
+                // Simulate loading time
+                setTimeout(function() {
+                    document.getElementById('preloader').style.display = 'none';
+                }, 1000); // 2 seconds
+            });
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function () {
           sidebar.classList.toggle("show");
         });
-    </script>
 
+        // Close sidebar when clicking outside of it
+        document.addEventListener("click", function (event) {
+          if (
+            !sidebar.contains(event.target) &&
+            !menuToggle.contains(event.target)
+          ) {
+            sidebar.classList.remove("show");
+          }
+        });
+      });
+    </script>
     {% block extra_js %}{% endblock %}
   </body>
 </html>

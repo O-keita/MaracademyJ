@@ -1,23 +1,36 @@
-{% extends 'courses/base.html' %} {% block content %}
-<h1 class="page-title">Available Courses</h1>
-<div class="courses-grid">
-  {% for course in courses %}
-  <div class="course-card">
-    <img src="{{ course.image.url }}" alt="{{ course.title }}" />
-    <h3>{{ course.title }}</h3>
-    <p>{{ course.description }}</p>
-    <p><strong>Instructor:</strong> {{ course.instructor }}</p>
-
-    {% if user not in course.enrolled_users.all %}
-    <a href="{% url 'courses:enroll_in_course' course.pk %}" class="btn-enrol"
-      >Enroll</a
-    >
-    {% else %}
-    <a href="{% url 'courses:course_detail' course.pk %}" class="btn-prima">
-      Go To Course</a
-    >
-    {% endif %}
+{% extends 'ourusers/base.html' %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/courses.css' %}" />
+{% endblock %} {% block content %}
+<section class="courses-section">
+  <h1 class="page-title">Available Courses</h1>
+  <div class="courses-grid">
+    {% for course in courses %}
+    <div class="course-card">
+      <img src="{{ course.image.url }}" alt="{{ course.title }}" />
+      <div class="course-content">
+        <h3 class="course-title">{{ course.title }}</h3>
+        <p class="course-description">{{ course.description }}</p>
+        <p class="course-instructor">
+          <strong>Instructor:</strong> {{ course.instructor }}
+        </p>
+        <div class="course-action">
+          {% if user not in course.enrolled_users.all %}
+          <a
+            href="{% url 'courses:enroll_in_course' course.pk %}"
+            class="btn-enroll"
+            >Enroll</a
+          >
+          {% else %}
+          <a
+            href="{% url 'courses:course_detail' course.pk %}"
+            class="btn-go-to-course"
+            >Go To Course</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
-</div>
+</section>
 {% endblock %}

@@ -1,75 +1,106 @@
-{% extends "ourusers/base.html" %} {% block content %}
-
-<div class="stats-grid">
-  <!-- Stats Overview -->
-  <div class="stat-box">
-    <h3>4.0</h3>
-    <p>Current GPA</p>
+{% extends 'ourusers/base.html' %} {% load static %} {% block title %}Dashboard
+- MarAcademy{% endblock %}  {% block content %}
+<div class="dashboard-content">
+  <h2>Your Learning Dashboard</h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3><i class="fas fa-book-open"></i> Courses in Progress</h3>
+      <p class="stat-number">4</p>
+    </div>
+    <div class="stat-card">
+      <h3><i class="fas fa-check-circle"></i> Completed Courses</h3>
+      <p class="stat-number">12</p>
+    </div>
+    <div class="stat-card">
+      <h3><i class="fas fa-clock"></i> Hours Learned</h3>
+      <p class="stat-number">87</p>
+    </div>
+    <div class="stat-card">
+      <h3><i class="fas fa-certificate"></i> Certificates Earned</h3>
+      <p class="stat-number">3</p>
+    </div>
   </div>
-  <div class="stat-box">
-    <h3>{{ enrolled_courses }}</h3>
-    <p>Courses Enrolled</p>
+  <div class="charts-container">
+    <div class="chart-card">
+      <h3>Course Progress</h3>
+      <canvas id="courseProgressChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Time Spent per Subject</h3>
+      <canvas id="timeSpentChart"></canvas>
+    </div>
   </div>
-  <div class="stat-box">
-    <h3>12</h3>
-    <p>Completed Assignments</p>
-  </div>
-  <div class="stat-box">
-    <h3>4</h3>
-    <p>Upcoming Deadlines</p>
-  </div>
-</div>
-
-<div class="chart-container">
-  <canvas id="gpaChart"></canvas>
-</div>
-
-<h2>Course Progress</h2>
-<div class="stats-grid">
-  <div class="stat-box">
-    <h3>67%</h3>
-    <p>Introduction to Python</p>
-  </div>
-  <div class="stat-box">
-    <h3>60%</h3>
-    <p>Web Development</p>
-  </div>
+  <section class="recent-activity">
+    <h3>Recent Activity</h3>
+    <ul>
+      <li>Completed lesson 3 in "Python Basics"</li>
+      <li>Started new course "Web Development Fundamentals"</li>
+      <li>Earned certificate in "Data Science Essentials"</li>
+      <li>Submitted assignment for "JavaScript Advanced Concepts"</li>
+      <li>Participated in discussion forum for "Machine Learning 101"</li>
+    </ul>
+  </section>
 </div>
 {% endblock %} {% block extra_js %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  // GPA Chart
-  var ctx = document.getElementById("gpaChart").getContext("2d");
-  var gpaChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: [
-        "Semester 1",
-        "Semester 2",
-        "Semester 3",
-        "Semester 4",
-        "Semester 5",
-        "Semester 6",
-        "Semester 7",
-        "Semester 8",
-      ],
-      datasets: [
-        {
-          label: "GPA",
-          data: [3.6, 3.7, 3.9, 4.0, 4.2],
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
-          borderColor: "rgba(255, 99, 132, 1)",
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: { beginAtZero: false, max: 5.0 },
+  document.addEventListener("DOMContentLoaded", function () {
+    // Course Progress Chart
+    const courseProgressCtx = document
+      .getElementById("courseProgressChart")
+      .getContext("2d");
+    new Chart(courseProgressCtx, {
+      type: "doughnut",
+      data: {
+        labels: ["Completed", "In Progress", "Not Started"],
+        datasets: [
+          {
+            data: [12, 4, 6],
+            backgroundColor: ["#FF6B35", "#1A2A3A", "#E0E0E0"],
+          },
+        ],
       },
-    },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    });
+
+    // Time Spent per Subject Chart
+    const timeSpentCtx = document
+      .getElementById("timeSpentChart")
+      .getContext("2d");
+    new Chart(timeSpentCtx, {
+      type: "bar",
+      data: {
+        labels: [
+          "Python",
+          "JavaScript",
+          "Data Science",
+          "Web Dev",
+          "Machine Learning",
+        ],
+        datasets: [
+          {
+            label: "Hours Spent",
+            data: [20, 15, 25, 18, 12],
+            backgroundColor: "#FF6B35",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
   });
 </script>
 {% endblock %}

@@ -1,99 +1,164 @@
-/* General reset */
+:root {
+  --orange: #ff6b35;
+  --dark-blue: #1a2a3a;
+  --light-gray: #f4f4f4;
+  --white: #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
 }
 
 body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--dark-blue) 100%);
+  height: 100vh;
   display: flex;
   justify-content: center;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFGa4GsojdfUiv-vwf6drQ_rYg54yPR4tMPA&s");
-  background-repeat: no-repeat;
   align-items: center;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-}
-
-h2 {
-  font-weight: 600;
-  color: #f2f2f2;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 .login-container {
-  border-radius: 15px;
-  padding: 40px;
-  width: 350px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.5s ease-out;
 }
 
-.login-container:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  color: var(--dark-blue);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  color: #f2f2f2;
+}
+
+label {
+  color: var(--dark-blue);
+  margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 input {
-  padding: 12px 20px;
-  border-radius: 50px;
-  border: 1px solid white;
-  outline: none;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  background: transparent;
-  color: white;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
 }
 
 input:focus {
-  background: transparent;
-  box-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
 }
 
 button {
-  padding: 12px 20px;
-  background-color: #cc5e15;
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 0.75rem;
   border: none;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 button:hover {
-  background-color: #ffb347;
-  box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+  background-color: #ff8c5a;
 }
 
-.login-container a {
-  color: #ff9500;
-  text-align: center;
+button:active {
+  transform: scale(0.98);
+}
+
+a {
   display: block;
-  margin-top: 15px;
-  transition: color 0.3s ease;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--dark-blue);
   text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
-.login-container a:hover {
-  color: #ffb347;
+a:hover {
+  color: var(--orange);
 }
 
-@media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 480px) {
   .login-container {
-    width: 90%;
+    padding: 1.5rem;
   }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  input,
+  button {
+    padding: 0.6rem;
+  }
+}
+
+/* Modern form field animation */
+.form-field {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-field label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  color: #999;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.form-field input:focus ~ label,
+.form-field input:not(:placeholder-shown) ~ label {
+  top: -0.5rem;
+  left: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--orange);
+  background-color: var(--white);
+  padding: 0 0.25rem;
+}
+
+.form-field input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
 }

@@ -1,0 +1,88 @@
+{% extends 'ourusers/base.html' %} {% load static %} {% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/assignments.css' %}" />
+
+{% endblock %} {% block content %}
+
+<h1>Assignments</h1>
+
+<div class="upcoming-assignments">
+    <h2 class="upcoming-title">Upcoming Assignments</h2>
+
+    <div class="assignments">
+
+        {% for assignment in assignments %}
+
+        <div class="assignment">
+
+            <h3 class="assignment-title">{{ assignment.title}}</h3>
+
+      
+
+            <p class="assignment-due-date">Due: {{assignment.due_date}}</p>
+            <p class="assignment-description">{{assignment.description}}</p>
+
+                <p class="assignment-level">Easy</p>
+
+            <a href="{% url 'assignment' %}" class="assignment-link">View Assignment</a>
+            
+        </div> 
+
+
+        {% endfor %} 
+    </div>
+
+
+    
+</div>
+
+<div class="past-assignments">
+    <h2 class="past-title">Past Assignments</h2>
+
+    <div class="assignments">
+
+        <div class="assignment">
+
+            <h3 class="assignment-title">Building Your First Web App</h3>
+
+            <p class="assignment-due-date">Due: May 1, 2023</p>
+            <p class="assignment-description">Create a personal portfolio website showcasing 
+                your projects and skills using HTML, CSS, and basic JavaScript.</p>
+
+                <p class="assignment-level">Easy</p>
+
+            <a href="#" class="assignment-link">View Assignment</a>
+            
+        </div>        <div class="assignment">
+
+            <h3 class="assignment-title">Building Your First Web App</h3>
+
+            <p class="assignment-due-date">Due: May 1, 2023</p>
+            <p class="assignment-description">Create a personal portfolio website showcasing 
+                your projects and skills using HTML, CSS, and basic JavaScript.</p>
+
+                <p class="assignment-level">Easy</p>
+
+            <a href="#" class="assignment-link">View Assignment</a>
+            
+        </div>        <div class="assignment">
+
+            <h3 class="assignment-title">Building Your First Web App</h3>
+
+            <p class="assignment-due-date">Due: May 1, 2023</p>
+            <p class="assignment-description">Create a personal portfolio website showcasing 
+                your projects and skills using HTML, CSS, and basic JavaScript.</p>
+
+                <p class="assignment-level">Easy</p>
+
+            <a href="#" class="assignment-link">View Assignment</a>
+            
+        </div>
+
+
+    </div>
+</div>
+
+
+
+{% endblock %}

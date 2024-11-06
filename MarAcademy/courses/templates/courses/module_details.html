@@ -1,4 +1,4 @@
-{% extends 'courses/base.html' %} {% block content %}
+{% extends 'ourusers/base.html' %} {% block content %}
 <div class="module-container">
   <h1>{{ module.title }}</h1>
   <p>{{ module.description }}</p>
@@ -14,8 +14,22 @@
     </a>
     {% empty %}
     <p>No lessons available</p>
-    {% endfor %}
+    {% endfor %}  
   </div>
 </div>
+
+<nav class="nav">
+  <button class="menu-toggle" aria-label="Toggle menu">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="nav-links">
+    <a href="{% url 'assignments' course_id %}"><i class="fas fa-tasks"></i> Assignments</a>
+    <a href="#"><i class="fas fa-question-circle"></i> Quizes</a>
+    
+  </div>
+</nav>
+
+{% endblock %}
+{% block extra_js %}
 
 {% endblock %}

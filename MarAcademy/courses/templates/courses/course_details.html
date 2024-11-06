@@ -1,13 +1,7 @@
-{% extends 'courses/base.html' %} {% block content %}
+{% extends 'ourusers/base.html' %} {% block content %}
 <div class="dashboard-main">
   <h1>{{ course.title }}</h1>
-  {% if course.image %}
-  <img
-    src="{{ course.image.url }}"
-    alt="{{ course.title }}"
-    class="course-image"
-  />
-  {% endif %}
+
   <p class="course-description">{{ course.description }}</p>
 
   <h2>Modules</h2>
@@ -30,4 +24,16 @@
     {% endfor %}
   </ul>
 </div>
+
+<nav class="nav">
+  <button class="menu-toggle" aria-label="Toggle menu">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="nav-links">
+    <a href="{% url 'assignments' course.id %}"><i class="fas fa-tasks"></i> Assignments</a>
+    <a href="#"><i class="fas fa-question-circle"></i> Quizes</a>
+    
+  </div>
+</nav>
 {% endblock %}
+

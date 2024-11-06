@@ -1,37 +1,47 @@
-{% extends 'courses/base.html' %} {% block content %}
+{% extends 'ourusers/base.html' %}
+{% block content %}
 <div class="lesson-container">
   <h1 class="lesson-title">{{ lesson.title }}</h1>
   <p class="lesson-description">{{ lesson.description }}</p>
 
-  {% if lesson.video_file %}
   <div class="video-container">
+    {% if lesson.video_file %}
     <video controls>
       <source src="{{ lesson.video_file.url }}" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-  </div>
-  {% elif lesson.video_url %} {% with video_id=lesson.video_url|slice:"-11:" %}
-  <div class="video-container">
+    {% elif lesson.video_url %}
+    {% with video_id=lesson.video_url|slice:"-11:" %}
     <iframe
       src="https://www.youtube.com/embed/{{ video_id }}"
       frameborder="0"
       allowfullscreen
     ></iframe>
+    {% endwith %}
+    {% endif %}
   </div>
-  {% endwith %} {% endif %}
 
   <div class="lesson-content">{{ lesson.content|safe }}</div>
 
   <div class="navigation">
     {% if lesson.pk > lesson_list.first.pk %}
-    <a href="{% url 'courses:lesson_details' lesson.pk|add:-1 %}"
-      >Previous Lesson</a
-    >
-    {% endif %} {% if lesson.pk < lesson_list.last.pk %}
-    <a href="{% url 'courses:lesson_details' lesson.pk|add:1 %}">Next Lesson</a>
-
+    <a href="{% url 'courses:lesson_details' lesson.pk|add:-1 %}" class="nav-button prev-button">Previous Lesson</a>
+    {% endif %}
+    {% if lesson.pk < lesson_list.last.pk %}
+    <a href="{% url 'courses:lesson_details' lesson.pk|add:1 %}" class="nav-button next-button">Next Lesson</a>
     {% endif %}
   </div>
-
-  {% endblock %}
 </div>
+
+
+<nav class="nav">
+  <button class="menu-toggle" aria-label="Toggle menu">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="nav-links">
+    <a href="{% url 'assignments' course_id %}"><i class="fas fa-tasks"></i> Assignments</a>
+    <a href="#"><i class="fas fa-question-circle"></i> Quizes</a>
+    
+  </div>
+</nav>
+{% endblock %}
