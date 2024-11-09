@@ -8,47 +8,63 @@
 
     <div class="assignment">
 
-
         <div class="assignment-title">
     
-        <h2>Assignment: Building Your First Web App</h2>
+        <h2>{{assignment.title}}</h2>
     
         <div class="assignment-info">
     
-            <p><span>Due Date:</span> May 1, 2023</p>
-            <p><span>Points:</span> 10</p>
-            <p><span>Submission Format:</span> Github Repository Link</p>
+            <p><span>Due Date: </span>{{assignment.due_date}}</p>
+            <p><span>Points: </span>{{assignment.points}}</p>
+            <p><span>Submission Format: </span>{{assignment.submission}}</p>
         </div>
     
         <div class="assignment-description">
 
             <h3>Description:</h3>
-            <p>In this assignment, you will apply the concepts you've learned in the course to build a simple web application. You'll create a personal portfolio website
-                that showcases your projects and skills.</p>
+            <p>{{assignment.description}}<p>
         </div>
     
-             <div class="assignment-requirements">
-    
+             <div class="assignment-requirements">  
                 <h3>Requirements:</h3>
                 <ol class="assignment-steps">
-                    <li>Create a personal portfolio website using HTML, CSS, and basic JavaScript.</li>
-                    <li>Use semantic HTML elements and CSS to structure the website.</li>
-                    <li>Use JavaScript to add interactivity to the website.</li>
+                    {% if requirements %}
+                        {% for requirement in requirements %}
+
+                        <li>{{requirement}}</li>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                    <p>No Requirements Provided</p>
+
+                    {% endif %}
+
+
                 </ol>
              </div>
              <div class="resourses">
     
                 <h3>Resources:</h3>
                 <ul>
-                    <li><a href="">Introduction to html and css</a></li>
-                    <li><a href="">Google</a></li>
-                    <li><a href="">StackOverflow</a></li>
+                {% if recources %}
+                    {% for resource in resources %}
+                    <li><a href="{{resource.resource_url}}">{{resource.text}}</a></li>
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>No resource provided</p>
+
+                {% endif %}
+
                 </ul>
             </div>
              <div class="submission">
     
                 <h3>Submission:</h3>
-                <p>Submit a link to your GitHub repository containing the completed assignment.</p>
+                <p>Submit a url link</p>
                 <a href="">Submit Assignment</a>
              </div>
         </div>

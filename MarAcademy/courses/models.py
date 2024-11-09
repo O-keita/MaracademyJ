@@ -45,6 +45,8 @@ class Assignment(models.Model):
 
     course = models.ForeignKey(Course, related_name='assignments', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
+    points = models.CharField(max_length=300, null=True, default="Not graded")
+    submission = models.CharField(max_length=3000, null=True, default='Url Link')
     description = models.CharField(max_length=50000)
     due_date = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -57,7 +59,19 @@ class Assignment(models.Model):
 
 class AssignmentRequirement(models.Model):
     assignment = models.ForeignKey(Assignment, related_name='requirements', on_delete=models.CASCADE)
-    requirement_text = models.TextField()  # each requirement as a text field
+    requirement_text = models.CharField(max_length=1000, null=True)  # each requirement as a text field
 
     def __str__(self):
-        return f"Requirement for {self.assignment.title}: {self.requirement_text}"
+        return f"{self.requirement_text}"
+    
+
+class AssignmentResources(models.Model):
+    assignment = models.ForeignKey(Assignment, related_name='resources', on_delete=models.CASCADE )
+    text = models.CharField(max_length=1000, null=True)
+    resource_url = models.URLField(blank=True, null=True, max_length=3000)
+
+    def __str__(self):
+        return  self.text
+
+
+

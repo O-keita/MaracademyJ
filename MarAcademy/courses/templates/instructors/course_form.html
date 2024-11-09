@@ -28,5 +28,9 @@
     <li>No modules available for this course.</li>
     {% endfor %}
   </ul>
+
+  <a href="{% url 'create_assignment' form.instance.pk %}" class="module">
+    Create Assignment
+  </a>
 </div>
 {% endif %} {% endblock %}
