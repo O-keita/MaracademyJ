@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <style>
+      .logo-circle { fill: none; stroke: #FF6600; stroke-width: 8; }
+      .logo-element { fill: none; stroke: #FF6600; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+      .logo-fill { fill: #FF6600; }
+      .logo-text { font-family: Arial, sans-serif; font-size: 24px; fill: #FF6600; }
+    </style>
+  </defs>
+  
+  <!-- Outer circle -->
+  <circle class="logo-circle" cx="100" cy="100" r="90" />
+  
+  <!-- Code brackets -->
+  <path class="logo-element" d="M60 70L40 100L60 130" />
+  <path class="logo-element" d="M140 70L160 100L140 130" />
+  
+  <!-- Graduation cap -->
+  <path class="logo-element" d="M100 40L140 60L100 80L60 60L100 40Z" />
+  <path class="logo-element" d="M100 80V110" />
+  <path class="logo-element" d="M140 60V90" />
+  
+  <!-- Lightning bolt -->
+  <path class="logo-element logo-fill" d="M90 110L75 140H95L80 170" />
+  
+  <!-- Text -->
+</svg>

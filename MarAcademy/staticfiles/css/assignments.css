@@ -1,0 +1,86 @@
+:root {
+    --dark-blue: #223344; /* or whichever color you choose */
+    --orange: #ff6b35;
+    --black: #000000;
+    --white: #ffffff;
+    --red : #ff0000;
+    --green : #00ff00;
+    --background-color: #ecf0f1;
+  }
+
+
+.past-title{
+    color: var(--red);
+
+}
+
+.assignments {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.assignment {
+
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
+
+}
+
+.assignment h3 {
+  font-size: 1.2rem;
+  color: var(--dark-blue);
+  margin-bottom: 2rem;
+}
+
+.assignment p {
+  font-size: 1rem;
+  color: var(--dark-blue);
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
+}
+
+.assignment:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* .upcoming-assignments > .assignments > .assignment{
+  border-left: 4px solid var(--green);
+}
+
+.past-assignments > .assignments > .assignment{
+  border-left: 4px solid var(--red);
+} */
+
+
+.assignment-link {
+  display: inline-block;
+  background-color: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.assignment-link:hover {
+  background-color: #e55a2b;
+}   
+  
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}

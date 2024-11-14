@@ -1,0 +1,166 @@
+:root {
+    --dark-blue: #223344; /* or whichever color you choose */
+    --orange: #ff6b35;
+    --black: #000000;
+    --white: #ffffff;
+    --red : #ff0000;
+    --green : #00ff00;
+    --background-color: #ecf0f1;
+  }
+
+.assignment-container{
+display: flex;
+
+
+
+}
+
+.assignment-container h2{
+    font-size: 2rem;
+    color: var(--orange);
+    margin-bottom: 1rem;
+}
+
+.assignment-container h3{
+    font-size: 1.5rem;
+    color: var(--orange);
+    margin-bottom: 1rem;
+}
+
+.assignment{
+   
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 0 10  px rgba(0, 0, 0, 0.1);
+
+    padding: 2rem;
+}
+
+.assignment p{
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+
+.assignment-info{
+
+
+background-color: #e8f4fd;
+padding: 0.4rem;
+margin-bottom: 1rem;
+
+border-left: 4px solid var(--orange);
+
+}
+
+.assignment-info p{
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+
+}
+
+.assignment p span{
+    font-weight: bold;
+}
+
+
+.assignment-description{
+    
+    margin-bottom: 1rem;
+    padding: 1rem;
+    line-break: strict;
+}
+
+
+.assignment-description p{
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.assignment-requirements {
+    counter-reset: step-counter;
+}
+
+.assignment-steps {
+    list-style-type: none;
+    padding: 2rem;
+    counter-reset: step-counter;
+}
+
+.assignment-steps li {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    padding-left: 40px;
+    position: relative;
+}
+
+.assignment-steps li::before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--dark-blue);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.submission{
+    padding: 2rem;
+}
+
+.submission p{
+    margin-top: 2rem;
+}
+
+.submission a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    background-color: var(--dark-blue);
+    color: white;
+    margin-top: 2rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+ 
+}
+
+.submission a:hover{
+    background-color: #04101d;
+}
+
+
+.resourses{
+   
+    padding: 1rem;
+
+    margin-bottom: 1rem;
+
+
+
+}
+
+.resourses li {
+    padding: 0.5rem;
+}
+
+.resourses li a {
+    text-decoration:underline;
+    font-size: 1.3rem;
+}
+
+@media (max-width:940px){
+    .assignment-container{
+        flex-direction: column;
+    }
+
+    .assignment{
+
+        margin: 2rem;
+    }
+}
