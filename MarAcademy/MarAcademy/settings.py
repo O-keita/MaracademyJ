@@ -43,7 +43,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "MarAcademy.urls"
+ROOT_URLCONF = "MarAcademy.MarAcademy.urls"
 
 TEMPLATES = [
     {
