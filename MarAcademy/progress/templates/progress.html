@@ -1,0 +1,115 @@
+{% extends 'ourusers/base.html' %}{% load static %}{% block content %}
+<div class="container">
+
+   
+    <header class="progress-header">
+       
+
+
+  
+        <div>
+            <h1>Progress</h1>
+            
+        </div>
+        <div class="action-buttons">
+            <button class="btn btn-outline">Print Grades</button>
+            <button class="btn btn-primary">Download Report</button>
+        </div>
+    </header>
+
+
+    {% if courses %}
+   {% for course in courses%}
+  
+    <section class="card grades-section">
+        <div class="card-header">
+            <h2 class="card-title">Assignment Grades - {{course}}</h2>
+        </div>
+        <div class="card-body">
+            <div class="filters">
+                <select id="arrangeBy" class="select-wrapper">
+                    <option value="due-date">Arrange by Due Date</option>
+                    <option value="name">Arrange by Name</option>
+                    <option value="status">Arrange by Status</option>
+                    <option value="score">Arrange by Score</option>
+                </select>
+                <label class="switch">
+                    <input type="checkbox" id="showGradedOnly">
+                    <span class="slider"></span>
+                </label>
+                <span>Show graded only</span>
+            </div>
+
+            <table id="gradesTable">
+                <thead>
+                    <tr>
+                        <th>Assignment Name</th>
+                        <th>Status</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        
+                    {% for  assignment in  assignments %}
+
+                    {% if assignment.course == course %}
+                    <tr>
+                        <td>{{assignment}}</td>
+                        {% if progress %}
+
+                        {% for result in progress %}
+                        {% if result.assignment == assignment %}
+                        <td>Graded</td>
+                        <td> {{result.assignment_grade}} / 100</td>
+
+                        {% else %}
+
+                        <td>Not Graded</td>
+                        <td> ⴵ / 100</td>
+                        {% endif %}
+                     
+                        {% endfor %}
+                        {% endif%}
+
+                    </tr>
+
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+  
+            <div class="total-grade">
+                <span>Total Grade</span>
+                <span>0.00 / 0.00</span>
+            </div>
+
+        </div>
+    </section>
+
+    
+
+
+
+
+
+{% endfor %}
+
+
+<section class="card grade-distribution">
+    <div class="card-header">
+        <h2 class="card-title">Grade Distribution</h2>
+    </div>
+    <div class="card-body">
+        <div class="chart-container">
+            <canvas id="gradeDistributionChart"></canvas>
+        </div>
+    </div>
+</section>
+</div>
+{% else %}
+
+<p>You have not enrolled in any course or Your course(s) doesnot have assignments</p>
+
+{% endif %}
+{% endblock %}

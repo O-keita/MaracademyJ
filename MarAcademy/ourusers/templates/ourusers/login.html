@@ -1,24 +1,58 @@
-{% load static %}
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarAcademy | Login</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="login-container">
-      <h2>Login</h2>
-      <form method="POST">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit">Login</button>
-      </form>
-      <a href="{% url 'register' %}">Don't have an account? Register</a>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/logo.svg' %}" type="image/svg+xml">
+
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>MarAcademy</h1>
+                <p>The easiest way to manage your learning.</p>
+            </div>
+        </div>
+        <div class="login-section">
+            <div class="login-container">
+                <div class="login-header">
+                    <img src="{% static 'images/logo.svg' %}" alt="" width="50">
+                    <h2>Login</h2>
+                </div>
+                <p class="subtitle">Enter your credentials below!</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="Email or username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" required>
+                        <a href="" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="login-button">Log in</button>
+                </form>
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                <button type="button" class="google-button">
+                    <img src="{% static 'images/icons8-google.svg' %}" alt="Google logo">
+                    Continue with Google
+                </button>
+                <p class="signup-text">
+                    Don't have an account? <a href="{% url 'register' %}" class="signup-link">Signup</a>
+                </p>
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+</body>
 </html>

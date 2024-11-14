@@ -6,7 +6,7 @@
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Save</button>
+    <button type="submit" class="btn-save">Save</button>
     <a href="{% url 'courses:course_list' %}">Cancel</a>
   </form>
 </div>

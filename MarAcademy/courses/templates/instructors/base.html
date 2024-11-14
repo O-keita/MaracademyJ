@@ -16,15 +16,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="icon" href="{% static 'images/logo.svg' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
     {% block extra_css %}{% endblock %}
   </head>
   <body>
     <div class="dashboard-container">
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-      
           <img
-            src="{% static 'images/logo.png' %}"
+            src="{% static 'images/logo.svg' %}"
             alt="MarAcademy Logo"
             class="logo"
           />
@@ -32,19 +33,25 @@
         <nav class="sidebar-nav">
           <ul>
             <li>
-              <a href="#"><i class="fas fa-home"></i> Dashboard</a>
-            </li>
-  
-            <li>
-              <a href="#"><i class="fas fa-tasks"></i> Assignments</a>
-            </li>
-  
-            <li>
-              <a href="#"><i class="fas fa-chart-bar"></i> Analytics</a>
+              <a href="{% url 'courses:course_list' %}"><i class="fas fa-home"></i> Dashboard</a>
             </li>
             <li>
-              <a href="#"><i class="fas fa-cog"></i> Settings</a>
+              <a href="#"><i class="fas fa-book"></i> Programs</a>
             </li>
+            <li>
+              <a href="#"><i class="fas fa-users"></i> My Classes</a>
+            </li>
+
+            <li>
+              <a href="{% url 'assignment_list' %}"><i class="fas fa-pencil-alt"></i>Assignments</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chart-line"></i> Reports</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-building"></i> Centers</a>
+            </li>
+            
           </ul>
         </nav>
         <div class="sidebar-footer">
@@ -54,37 +61,52 @@
       </aside>
       <main class="main-content">
         <header class="main-header">
-          <h1>{% block page_title %}Instructor Dashboard{% endblock %}</h1>
-          <div class="user-info">
-            <img
-              src="{% static 'images/default-avatar.png' %}"
-              alt="Default Avatar"
-              class="user-avatar"
-            />
-            <span>Welcome, Instructor</span>
-          </div>
           <button class="menu-toggle" id="menu-toggle">
             <i class="fas fa-bars"></i>
           </button>
+          <div class="search-bar">
+            <input type="text" placeholder="Search for Programs, Assignments, Assessments etc...">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="user-info">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK_mAcrV3vVhLq6HK4c1liqGV59qhOwXdEGw&s"
+              alt="Default Avatar"
+              class="user-avatar"
+            />
+            <span>Edna Francis</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
         </header>
-        <div class="content">
+        <div class="content"
           {% block content %}
           <!-- Content goes here -->
           {% endblock %}
         </div>
       </main>
     </div>
-    <footer>
-      <p>&copy; {% now "Y" %} MarAcademy. All rights reserved.</p>
-    </footer>
+
+    <script >
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('sidebar');
+
+  menuToggle.addEventListener('click', function() {
+    sidebar.classList.toggle('show');
+  });
+
+  // Animate progress bars
+  const progressBars = document.querySelectorAll('.progress-fill');
+  progressBars.forEach(bar => {
+    const width = bar.style.width;
+    bar.style.width = '0';
+    setTimeout(() => {
+      bar.style.width = width;
+    }, 100);
+  });
+});
+    </script>
     {% block extra_js %}{% endblock %}
   </body>
-
-  <script>
-document.getElementById("menu-toggle").addEventListener("click", function () {
-  const sidebar = document.getElementById("sidebar");
-  sidebar.classList.toggle("show");
-});
-
-  </script>
 </html>

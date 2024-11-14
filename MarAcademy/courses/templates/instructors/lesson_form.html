@@ -4,7 +4,7 @@
   <h1>Add Lesson for {{ module.title }}</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Save</button>
+    <button type="submit" class="btn-save">Save</button>
   </form>
 </div>
 

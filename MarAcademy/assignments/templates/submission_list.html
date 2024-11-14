@@ -1,0 +1,50 @@
+{% extends 'instructors/base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+  <div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="bg-gray-100 p-4 border-b">
+      <h2 class="text-2xl font-bold text-gray-800">Submissions for {{ assignment.title }}</h2>
+    </div>
+    
+    <div class="p-4">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3">Student</th>
+              <th scope="col" class="px-6 py-3">Submission Date</th>
+              <th scope="col" class="px-6 py-3">Link</th>
+              <th scope="col" class="px-6 py-3">Grade</th>
+              <th scope="col" class="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for submission in submissions %}
+              <tr class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                  {{ submission.student.username }}
+                </td>
+                <td class="px-6 py-4">{{ submission.submission_date }}</td>
+                <td class="px-6 py-4">
+                  <a href="{{ submission.submission_link }}" target="_blank" class="text-blue-600 hover:underline">View Submission</a>
+                </td>
+                <td class="px-6 py-4">
+                  {% if submission.grade %}
+                    <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">{{ submission.grade }}</span>
+                  {% else %}
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Not graded</span>
+                  {% endif %}
+                </td>
+                <td class="px-6 py-4">
+                  <a href="{% url 'grade_submission' submission.id %}" class="btn">Grade</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

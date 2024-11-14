@@ -1,34 +1,66 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarAcademy | Register</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="login-container">
-      <h2>Register</h2>
-      <form method="POST">
-        {% csrf_token %} {{ form.username.label_tag }}
-        <!-- Username Field -->
-        {{ form.username }} {{ form.email.label_tag }}
-        <!-- Email Address Field -->
-        {{ form.email }} {{ form.password1.label_tag }}
-        <!-- Password Field -->
-        {{ form.password1 }} {{ form.password2.label_tag }}
-        <!-- Password Confirmation Field -->
-        {{ form.password2 }}
-
-        <button type="submit">Register</button>
-      </form>
-      <a href="{% url 'login' %}">Already have an account? Login</a>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/logo.svg' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>MarAcademy</h1>
+                <p>The easiest way to manage your learning.</p>
+            </div>
+        </div>
+        <div class="login-section">
+            <div class="login-container">
+                <div class="login-header">
+                    <img src="{% static 'images/logo.svg' %}" alt="" width="50">
+                    <h2>Register</h2>
+                </div>
+                <p class="subtitle">Create your account to get started!</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                       {{form.username.label}}  
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                      {{form.email.label}}
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                      {{form.password1.label}}
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">  
+                      {{form.password2.label}}
+                        {{ form.password2 }}
+                    </div>
+                    <button type="submit" class="login-button">Register</button>
+                </form>
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                <button type="button" class="google-button">
+                    <img src="{% static 'images/icons8-google.svg' %}" alt="Google logo">
+                    Sign up with Google
+                </button>
+                <p class="signup-text">
+                    Already have an account? <a href="{% url 'login' %}" class="signup-link">Login</a>
+                </p>
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+</body>
 </html>
