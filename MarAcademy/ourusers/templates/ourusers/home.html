@@ -1,186 +1,244 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MarAcademy - Innovating Future Learning</title>
-    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-  </head>
-  <body>
-    <header>
-      <div class="logo">MarAcademy</div>
-      <nav>
-        <ul>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#courses">Courses</a></li>
-          <li><a href="#mission">Mission & Vision</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarAcademy - Education & Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #fff;
+        }
+
+        .hero-image {
+            background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80') no-repeat center center;
+            background-size: cover;
+        }
+
+        .feature-box {
+            background-color: #1e293b;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-card {
+            background-color: #1e293b;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="bg-slate-800 py-4">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+          <a href="#" class="flex justify-center items-center space-x-4 font-bold text-white mb-4 md:mb-0 hover:text-gray-300">
+            <img src="{% static 'images/logo.svg' %}" alt="MarAcademy Logo" width="40" class="transition-all duration-300 ease-in-out hover:scale-105">
+            <span class="text-xl md:text-2xl">MarAcademy</span>
+          </a>
+            <nav class="mb-4 md:mb-0">
+                <ul class="flex flex-wrap justify-center space-x-4 md:space-x-6">
+                    <li><a href="#" class="text-white hover:text-orange-500">Home</a></li>
+                    <li><a href="#" class="text-white hover:text-orange-500">Courses</a></li>
+                    <li><a href="#" class="text-white hover:text-orange-500">About</a></li>
+                    <li><a href="#" class="text-white hover:text-orange-500">Blog</a></li>
+                    <li><a href="#" class="text-white hover:text-orange-500">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                <input type="text" placeholder="Search..." class="px-4 py-2 rounded-full bg-slate-700 text-white w-full md:w-auto">
+                <a href="{% url 'login'%}"><button class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 w-full md:w-auto">Sign In</button></a>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="overview" class="hero">
-      <div class="hero-text">
-        <h1>MarAcademy</h1>
-        <p>
-          Free coding courses, scholarships, and career development for high
-          school students
-        </p>
+    <main>
+        <section class="py-20">
+            <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">A Better Learning Journey Future Start Here</h1>
+                    <p class="text-lg md:text-xl mb-8">Unlock your potential with our innovative courses and expert instructors.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 transition duration-300">Learn More</button>
+                        <button class="bg-slate-700 text-white px-6 py-3 rounded-full hover:bg-slate-600 transition duration-300">Find My Course</button>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 relative p-6 ">
+                  <div class="relative">
+                      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="Students" class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover mx-auto">
+                      <div class="absolute top-0 right-0 bg-orange-500 text-white p-4 rounded-full">
+                          <i class="fas fa-play"></i>
+                      </div>
+                  </div>
+              
+                  <div class="mt-6 text-center">
 
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8" />
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0"
-            />
-            <title>Statistics</title>
-            <link rel="stylesheet" href="" />
-          </head>
-          <body>
-            <div class="stats-container">
-              <div class="stat-circle">
-                <span class="stat-number">{{ Users }}+</span>
-                <span class="stat-label">Users</span>
+                      <div class="mt-4 flex justify-around text-white text-sm">
+                          <div class="bg-orange-500 rounded-full px-4 py-2">
+                              <p class="font-bold">Courses</p>
+                              <p>{{Courses}} +</p>
+                          </div>
+                          <div class="bg-slate-500 rounded-full px-4 py-2">
+                              <p class="font-bold">Users</p>
+                              <p>{{Users}}</p>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div class="stat-circle">
-                <span class="stat-number">{{ Courses }}+</span>
-                <span class="stat-label">Courses</span>
-              </div>
+              
             </div>
-          </body>
-        </html>
+        </section>
 
-        <div class="hero-buttons">
-          <a href="{% url 'login' %}" class="btn login-btn"> Login</a>
-          <a href="{% url 'register' %}" class="btn register-btn"> Register </a>
-        </div>
-      </div>
-    </section>
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="feature-box p-6 rounded-lg">
+                        <i class="fas fa-book text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Expert Tutors</h3>
+                        <p class="text-gray-400">Learn from industry professionals</p>
+                    </div>
+                    <div class="feature-box p-6 rounded-lg">
+                        <i class="fas fa-video text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Video Tutorials</h3>
+                        <p class="text-gray-400">Access high-quality video lessons</p>
+                    </div>
+                    <div class="feature-box p-6 rounded-lg">
+                        <i class="fas fa-certificate text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Certification</h3>
+                        <p class="text-gray-400">Earn recognized certificates</p>
+                    </div>
+                    <div class="feature-box p-6 rounded-lg">
+                        <i class="fas fa-users text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Community</h3>
+                        <p class="text-gray-400">Join a supportive learning network</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- About Us Section with Cards -->
-    <section id="about" class="about">
-      <h2>About Us</h2>
-      <div class="about-cards">
-        <div class="card">
-          <h3>Mission</h3>
-          <p>
-            Our mission is to democratize education by offering free and
-            accessible coding courses, career development resources, and
-            scholarships. We strive to empower students with the knowledge and
-            skills they need to excel in the digital world
-          </p>
-        </div>
-        <div class="card">
-          <h3>Vision</h3>
-          <p>
-            Our vision is to be a leading educational platform that shapes the
-            future of technology by nurturing talented young minds. We envision
-            a world where every student has the opportunity to succeed in the
-            tech industry, regardless of their background
-          </p>
-        </div>
-        <div class="card">
-          <h3>Values</h3>
-          <p>
-            We value innovation, inclusivity, and excellence in tech education
-            for the next generation.
-          </p>
-        </div>
-      </div>
-    </section>
+        <section class="py-20">
+            <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="Learning Community" class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover mx-auto">
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Creating a Lifelong Learning Best Community</h2>
+                    <p class="text-lg md:text-xl mb-8">Join our vibrant community of learners and educators to expand your knowledge and skills.</p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-500 mr-4"></i>
+                            <p>Flexible Classes</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-500 mr-4"></i>
+                            <p>Learn from anywhere</p>
+                        </div>
+                    </div>
+                    <button class="mt-8 bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 transition duration-300">Discover More</button>
+                </div>
+            </div>
+        </section>
 
-    <!-- Courses Section -->
-    <section id="courses" class="courses">
-      <h2>Courses</h2>
-      <div class="course-grid">
-        <div class="course-card">
-          <img
-            src="https://parachictacademy.com.ng/wp-content/uploads/2022/04/coding-classes-for-kids-in-Ibadan.png"
-            alt="Web Development"
-          />
-          <p>Web Development</p>
-        </div>
-        <div class="course-card">
-          <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASsAAACoCAMAAACPKThEAAACKFBMVEX///8tC1dvJoBvJoL+/f//9v9jKW77//puJ4BjJXotC1bFr8hiD3nHr8pgEW9MG2stBVUrBFYpAFXAtczZ1d47J10NAD43DlsfAEnMzcorDFctDFTfiY3U0te+epMqClo1NTVXRlKUiKYcAFDdjZr9+aiWYXndkpdWLFdAwLE7EU4uybD6yAC2guxDQ0T9xx1SLDZPLHg4sdxpXYJDtaocF1VZUFqhdjFzTZwjHWAAAC4wLC1yX3P19JQeAEQhJVYvMy5JQ0pKS0vXzZaabMWTbZdON1CLYJR+XYuEY4mMb46ReZBRRFksLCz+wys0bYJHncx+QI2AS4qblJyhj6KukrN5T4A8NUIkADuphDmQcy/YzeAAADd+S29dSHGmeqyujrkAACUaADrAuMU8EUuUh5gyKDguADjElzXXqjaCc5MxAEffi4dBmp0OAEkoAF+toYuMWpU4DDZOKjmWb0owGDRxVURcOTCqik/2v0Deq0S4lUzUqmyqdj+IZB73zyM7ESYiACbfpT09FRjIniN9UzeHYTRbO0HvuD7+uxK8lDdJKSKQdCtiQRYaACRtRjMLABPevEiseiU5AA9TIw2FZTvy2v0/MlZXTG24p9LI1cHPkqD79bmZi4SAcXHBupe7fZ4qQWZElaNuTpiAVm03aYG3gPNnPWKscJVKZJ5MdrVVp9XMvqw5JUgbIFKRfrIyRIIhOGXKv5OuoYWOiYtzaXMJAAykpaQP2yRQAAAb8klEQVR4nO1dj18TV7Z3BJ90eGzvDARu54oDjBalWcMuBVtJp0hblCTgPgWJBrMagQDRpNX2Weiu1m3Lot0fz763Vde2a926dre13fqk+++9c+6dmUx+APEZZcKHb2By7q/JzDfnnjn3ZzZt2sAGNrCBDWyAY2t1dfWm6ooFXPqmrU+Nq025XG16rFeJ91e+j9gK3/XT4go/rYLBv+unRNWmLZUOVKynxFX9v1U2aqufFlfVm+p+UrW5pqpi8ZO66qdVCas31f57VVVN1eYKBXDF72KDq9WxwVXp2OCqdKwRVzWVhrXj6pmmysKzz9SsEVc1Nc8SSZNlWZMsyJosQYzGJU1IkiZxSebvPGzFSaJcrmwf7CQsaJ3UyiZrrlNki3PZ/aFWSX4efNc0snZcbQausjRJBciJkmWJIKwgvIuAdcAwj3SlS9nsksgEYTiPLOXks2W56IXIToSmac+uYR10cVUB0KRn186211QWVxJZQ71Ce/UokHWd2xVGNI1h9WC6jvGapstCgvvRJV0jGNZ0AJN1mUG9Y0yXZSIzXWISZtUlkBnk03RIKvUCKoYrYAdvkzFJY2BnFbxDKA93Ci/dtipAjgJ0EOCHc8upAbqgHBwk/s+QKAJlQK3hWKJuQ7a1rYOPwJVk3TkoiqUboDYEFEOXiJwBvdG4JnHmpIzOdCQCskBIkWVdlTXIwzRdxGqyIvHcTFqHXOnRZDQaTcC/SiSWSiZTFOqPTCHCjLqgp6LRZAp1L5WMJikDXdKU6Lnz589FKRItpZKJKCqbHE0mkjpTtNLIqiSujLdnAIsz89PH31HJf84szr9rwp1euDYz8+7VGQfvJSDf4ntUJea7EHzbJB0k8af5ucDw8PzxZIZJ6kfz196LAsvRX81ce9uQCFtvXMmS8Yk/4PcHAgF/YO6C+v4cvCU1YvwaYi/OQayVNrPvOMTMmLpuzkDcMZrRk1cv+a9cCfivBGbeJ3rmot8/d57o2uU5v3+vIZNSK2HFcAV69UngSiAwHMB7vpak0/4rly4oJPoboOiDeU4T/gXmx49Dvpkok8xpCB8zdHMvMjV8KRC44r8aBa4g1zGT6ZcXA4G9lJESHZfK0StJoqhXH37w8UeL/sClhfQC3PkxQ+0chsjEby9cWLgEzCxcuHA+szfA9YolLK6Si0DV1XPvAIdX5j7IqBeB00vnLK4MJpXu5FUOV8eAg6uGri6AXkynJ4aRkQwGFjKKanRiBe3MqNRAruaxDnKuqHoBUuYua2pixn/Fv4BcYRlVxzp4zJCLtq+KoJL0yjgGenU1rWU+HgarlKDTUCE7G/H4PrieaifWwE54MgJXV4Ar2eFqAbj6TUJn9CqcAFTxIlbWxYSe5Fxh631dchWYNiUGXIFGUdSot1E35hMak5XOYeRKlTS61496xZjN1e8EVzo9BpbuqmFgHfRf+r0KZQOcK7bOuNI0sFd+/7SRyVxAe5SQzwFl078Hi72gMI2A4cI6qOigV1DVIF2igivjOHA1w7mCgtOm0CsQLoPhA3ulrbs6qGmgV36og2oU7c005Y+54Q/BFL2fKeAqMJ9Q1UZ4VC7LVeBS5x/WNVfA0YU/7gVV8i8YurIA+oOuFJiiPK4C/rmFhYWLixBjcQV1UMty5Ycnov/qf3H/av1yFbiEN+q/lpQk5X2wUOiIGkW44q4WwubKdHMVGP4E6PzvdczVXn7/ftCm+QF43mngl2NEpyoX4Yr78Vm9mjcldx289D9g1y8O42NxfXKFPsPw/MzMsY+iRIYGsbGAKoZeJ/Ya5HI1fHX6w2ngAp+Dll7hcxC5gmL+Sx8cE02A9czV9CnTNFQGT3ld07mbcBw870KuZsYNmpjmdVDNq4MGePyBTvT3Ue1K50qqLK7ASaC6xhj2b+pMj2IlvKAUcoXaxjTjQ7/D1UweVx+nsWG9np+D4DOAj8l01CuI4QbrggzOZAFX81Fw4GdsrgLQlga/3aqDF9FpNf7EFWud6hXlepXWcdyKSbKmSYIrRSqmV1GgctrhChwL1iG4omivoDGUXET7vy71SrK5wo5zEaELrlQJLD3RRBsHuFKRq99EJS0xzZ+D9E+83wG4uyrsF/pXnTrFJrbQqxIvoHK4kiy/3eFKktBeDQNXODAsc67Oq7qsiD4ZZuuV8lvsZziX0cZBkwIfqQb6/ed1xhUR9Kq01mDFcQVVyHC4kuUE2GfgSpPB0Cud3NfSwCxZtp1RYdu15Bx2ULx/7jg4/MMfZHifTmeGU4l9MmzdtZ0lKXMMnl/T4KRbYeBqXugVcgW+6JXAcCfolbkX8nHbPg3CMRMqJXaoCj/2qqmrF6GZCFypf4QSxwyy/voZoE3zCe+TAb/KtsXReWGvJFmX1c5LvK9Pkuivoa7OR3lfH/a3axnsbxdUzZ/LMOAqcOljVcpAFYbkJr0ibbvMe93wWKz7jb69ODf3LthsydID3XxveG4RVIkPjQ5cW1xcPJ9hPN/ir6IaS7w3BwXAcWXRhflhwMyvL6v6hPrR3Ny1TjWjm2/PXXubOiPWFcWVzEeGcZDYknKhRy8nk6nsjYELmkwmIIYrhqxfTkaTKdbBSCqZPJck4ISlLkOMjuOoqpns/OBclDJwZJVUNJVMySzBlGQUzFqJ3aKe4goYkvkYPNQxPtSZzxWOK7siZQluXEM33hpAZnoGB6YlpvBBaZynwJObZEyCWAjoKsQz0UaCSAyUypXkKa7EfAUJvE0cj8+/BSQm5wEPDCAhSC8qoiwSddYh8wkLEp/yAYXgaZAhzCIVtVfjrOmMENRfuQL72/GKmWxouhFnlBW6iATnw7hsC7Apc5Zs6jSuMsgfw4llwIcs9Evj8bySI9tQCLxXOL8mypauWJ7hCq+a+gYpjX/acXAiquWbXIjIsWKyjtMZcQql5pAtIxcy1xScGyPjURNhTj7XIj6zRuJ6yeeQVKRe6fR67CQdr60/dbPOLOXpVOwu5QKhcABQLhq7CjzFlUx8sZFG9fqnN5TG+rpSmx5PDd7iiiFXjaO1jdL4kfqOR/zanzi8xBWA+j49mYjNGubNuoSyNowsDy9xBcZHU3wHZ2OmTmd9qtfUylNccedHpd0+qmimqiiKClAUeLxLXCbgjEpERAso+GAkOVFFQMpk+bzEFTpPpq8AVGZUSAb6FDlQSZEC+bhurkOumKTONjQ0w8uNNkq/x/fm2HVinoy5k2JxY7RhZcRizQ2jtDxkeYorZrQ1P5ePWpOO8tiGG8S8mZPePNtYX5A/H39+rj5RFqK8pFfgYyvx+gLEFRF7upYRNTf9po92FRYoQJdRFq4kL3EFjQ7aWACVSIaQwKAp4+4k00laEUbJ6yJWhKf0ikPXaUcuJiZMvpZEZqxYt9ZTgwe5ojdjYJEdNGDIxxdLyHKp3SdPBN7jSmqMgTnORXOXWEXzyM3dssJ7XMm0LXY63zp38IU2awzPcSVLupljmMcbx8cblQz68QUguJpLOOdYtlgWBKYt79bDd5Dr91cOV7wr3PDFAT41QyZ2rYQOxszrrYABqrPUcrlSsk4HWosiEmmN6gr/NAcUm05FKrvnuEK6oBqCm97cHPOpu27tWAm3JjIDn+3c+crOzz43UtuL52lv/5qoX0CuZfBt48ux55pdqG2UK4crZlqOepdxov3MmTPbzmwrjjPtu9QvgKmdr7zyl3Tq1pni+c7cpsabryyLB/uuN+Q8SerM4noleZEr2XLfa5k+8fX2lfA1Ife/ffDaaw++7VFSJ24Xz3T7qJppfQC5iuDBaw+WqDma8yCZpcXHwTynV2IU1Rjn/jkYWpo2TSpg5gGiVF0mYP0bxxOKqlAnpzt3ImESsGrj6eI+fRq8ejn3aUKlZccMPcYVv0g1fgOM7A0EvPmYJjX9rABAgbD8E6re/aUbr2qKD08Qh4I48CXzxeBE0XOAuzUQXBjNBwlzr6IYUZ7TKw6jDUy7q1/FlI3Xf1qAn6nR22C6wcJHjUO7X0Ds3r0b/l84290B5hpKjlKnn08WW3cUEACowDGvLKxOGBsxkxmFVP30JTW6nZt94OrOC268+KovxkveNLOMLIeKHB/MQnS9nOZAY2sy9aXXC9Akmydu3waDfiKl/nDnzp2zNu4cMmlbbS08HOKqw5V1at4AF+DNS9ZUchPTm1xJ6vg4WneaFp67SgmhOTAMkx8SibQZJTKx+nLS6XRi3DTTEN63b3x8H1UobiKDJRSG3fKG4T4H/GNKRXNFfLMc9NmXlsdf/yref8bY/a9OcDz//PMnTlhyHr7aRb48dPdQMdztBvuurT6A4U2u6MkY+M/PxeJFLHoBXjfUr9E9d3zP9vb2be14RMFxSLcnzr5QHLvvqqxJWn06sje5wm534KqhBK7+9rfXVfI8evdn2rNwSLNEeLs9fvaF3ctzVcImDd7kirzMq2AXbfor1DS7shWphrwO6tpE0WqXi13Gl0VrINRBpuC0o9WoQniQKymTMFMpM5pKRU30wFU0yvlIg21Om4nxRKJRV410Gv4KYRh8PBZMvAomXlWJq0OH/0MqbcLh2kq1V+q9W7fcrb6UTP/+iwK8rEbf5I26NxPq3bMvFsddA3xNHHrEJeCaVDjxX8OdjRgrbaMUr3EFDQ76NXYuCIApupVk6V/8vAB/VxOf8Z6Cz5J5vqgLdyjTHm2TrWXhOb1CX5EoJ3J6oLYnNeMf3+QS9c3Pv/mnmvj2M8RfoupdUKHdxXCIrGOuoJWrZowJhBjx6uhI6XqT9nI+utUm3bx/f+r+/aiaod+9WgzffUex26I8G915jitonJnXr+dN3vDhfH73no58S0fCdHDFlUxGAS6JQmxAnCMTaR1zJbPGenCucGQw26sb82m6znKA+/bh/GLCkDQ+z13OB9+uVJPkkldyVRBXMt9WrzFmDQqCN8pd0ueaG+KKxO/aftlzY+VVZqeXdZdJL3HFtUMixve1vIvB6mfAnoZaUy7ytH/a8BZXmkYTjea+U+Pgge47tc/CqVOnGtNrP5TqKa5w2sdsPXZY3TR02pY7e4gpazo+j/AUV0THqWdgoGLdWt4ktNh1de0roYe4AsNujsZw2mIdBanBmS3TIGbKrBlDFrykV7JEJOrz3ff5cETBvO/ysO5HvbFxsne4komuKxlo/qdxBSBxT87W89YtrQW8pFc4TKfTKFHuf+rrNlm+m7rWVHmKK1z8nxi9aaYnY6fqRhozJDssJbt/PGCt4CWuAGDbfYoRmzXjsTbqaq2QkhePPkF4iiuZxD9dSmdwQQ7olq9MXSllg5e40jVmzsbijc2TGbrU0EVlzRkCdY8SL38vBQPK65crbDsnZk92xV5VaV2X6QHXMxde4gpMErRyzPj3BmMm/G/UweW54iu9VBw9V3EFxYoL3XBc3ZkJu2yustPlGa5wvn93FyJOSUfXiriu6ExkVSS6XKY4LetMb0/pFZONWTHxKk5RcKNBrJRDCf/qE3Q2hsGGLnO2IS+v0516vdzV2DNc4fpBsSauuSv9feHiuNwpWbQNZ8T+ubmLzi6XtSH+CFv+rw4v6ZUmEdXXxmEqlrAculTSje+TbabasVymWVLWTi8vcYW/DkQMiuPvRKXptGlNkU1DBLwbfMoUSDzSgIeAmYYIp0wBKC02zrw+uML1SZKOww1sgs+ttYFb/HPBRyXFd+OGK5HqKv7UnKAkW9/Qomt8bZizwcyKbST+CNBXaXN6iSvnNmWzLmdZcxsFU98Qa2iOxWlHrJmvYhYZYjgXnfFf4JMZ/1U4McUYJ8xiHw4QpItfesNtgNlyL8lanSituMWa97jCW6OxHBtdb1rroKHh48tZ49A8i+PKhKuRZq8wFDvvyIJEsU0bTjUm2ami+VyJNhGTVh4k8x5XeKN0thaXTdi4QRTfzXqIGu2WXGMWtRDn03FrVsaaJBx7doamsYtV4luO6fgTZ3zjK42tBNRGZeVNDr3JFaNmo3nKGvQ6tQ9XNqeNdOO+fWDPx+2hsH0gmaou7LhCcmbfmibUTaMRS46PN4K9I2Y0QVdBapXJfd7kChWC3eQ6hepVf/o0KJCyq3ClzS5F/Sefi/WPl+XvspO2z945e+cHc+nBa7gK58FrbxrqvRWX9Qh8ldJX2z3TY1xxMKZ2NdhD9cJSqfTrHdY0WWe+7LbnE8Y/xByjf5K7ubNB7/7hW3sl12sm2d6+7GIxfiZcIrY9qq/4sPSeXllkkeuxBrtp0xxriMVJ6sQtsRywPTsz64RJ//4Nx6vkh5wZWC/+YH6OqwNxfta3aXpClFwBO3bcjq7q5HuRK10C84OPKKmpo4OxFDNoRqUpDtyEICnEFM1kDAMnY+kGUbpzYKjmO/fPTUy88879BJad6FgBfLpXSircT7EC9AoeXLSLT0U2gbSlz7/43MYXX9zXVWupgIW4SXatMgn5K3il9NVRmVypcd55AH6osbTTtYp05ysPGmmtmHLkzM5KbT+zrf0Mzv937A+YpzPt7XzWO4Z2bNtxQqwlIcVe3G/Xiuw9WQFcSbJl25vbDFylm6Vq5ytgfeqyXGGfA+dq27YdO8QfYBuSw1njAXg7037icTdq8yhXMlOUWd6N4FNYx5E3Ef8Lf4A3IxkaP+nqTZicpfTe86tj4jGp8ixXsqKIZbzYr4CLvqhBEzwGJBPXfjXiGrC0YYAIvmcjxa4JiCtYDQCZKLipivrYPaQe5UqSFV/d6dMxa34fNGh8CvmyYL7/2bvEGIR29OlYvY8Yh5ZZDnD2Sz4A9ti9fh7lioG94j6otbPMn5u7jGLz/e/Q9CjP1BBX08ut43rhEMUfxBZcFUzALX1DnzXnquAOrLDiw84XeBDyGVjwrNPVL8HZzHE3X3zxLqGzMXgSNoDeqYcguXBBAOZKMVcfxP8bkrbGv7G+HFcSMbmXiH0A8EZVQlLd3d/l+pvdRNFVgpkogf/uoviuWyOPzZPgao1/Y724FeG/Dy4m8+NVEtx2HJcDYL+JA13B7dlxF03cFZNXMlJQx4iuEVKmgS+PcJVd58ChSzKR3FspAAdww005l45fNXDJt3sifGiD6IWLK7B7SyblwNpytXk5vYJ71rOd37wzvIhu8OkdTGyRj9uMY89xQZ7yDafC6ddWr6wlNK4trewwkbKiqIxE5mFivzSezqMAYqdbawmlfVDyz/8YgNOsJVfPVBhq1rAOVhz4Na8FV/xbqoHjY79WRRk+wkXYmnBV476ESsCa1cGqzVWCLKs28q/fvqgcpcBcNVn94UKVI6Fs1Q6BGgxaeTG82copZP7i+fH7wquoqrELVnENwgvDnFX2Ka0rsq+Uc/UUsBUPdT/h94MXg/csLhSupsriC+Ms0qzbs3JwdvHaBSUYxwM1VRZX1jeAqQ51m8XXUfOMCFRt3mzX/prN4oNqst9QVdUzVVWWuvOTCAGvaXNVlqut4kaeLKqrq7duGv2PVXA4P3xYHA+Lw+HDdrSAExBlhXC4AEWilsNb+eGjb3Hwt6Oj9pf+hKnaurW6Fq6afzIc4TIOiMs4AMEDQuZvB/CF4BEWXKJLfgMCbyBAgsOBN6xDDkKhA2+ELNGOCYXwKCRAOIxy2JZDXA5bcASIO139FMwValUdfOcHBywcdaSBXQfiLvmeI99zy4MDWfngQERIkYH4oJAjkbHIIMgRKyUUHIjsH+MpY5HQwP791saiA+Gv8A3C+/ePBYNjXAC0BsNCQPSEI0KIREButRJakbbTT8W0b6mDCnJ0rLcP0dsbjggJ0BMas8WhYNCKHuob6hmccuJ7gr2uPLbY1xsMTvUODQl5cHBqyE4IhqbsAr1j4ez5e5eCvVBgSBQOg4ghOI6FW3uHegWmJntELCaEl3gmyN7DydryRFlCva3eMoq1Pw5fWA9+scGDA/B19SAioUGMhb9IT2Swi+fowe80NNja0w/few9+7YOtGI0praEuzArfdP/+SCgIkT2QBc4zONjDz9MPuYKh1n6Mgzz9raFgP+bp6e9H/dnfj+/9EBUM92D6fviY/tZwEArC52UzcexfOoJFIUfP/iWsmaf5LT1BsrZWj6J5PhqatBCKt0068iDI4dGRybbJtsHgpJAnJ0eCg/A2MjqKeYIhjJocHTmC8pFJnjJ5ZCSI+Y8cGRkdGUH5CIqQNBlGmWeBt2AY5REeEw4e4ZmOPMSEIzwwMgJHXtjCUjArTy454sMgWrF/PclqCM9ZrlUH4qjKQul7x/DAlR7eQYhAhcO6MdTbNwSyiISIKVHLRDWYGhzowxSsor2iukIJOESCvGLhX5yLmBuiQzxrH555KtQ65CCCta+PZ+ydCi5N4efiB+KnORfGY3qnel0Y45pV/eQehvAERGfhcLy3xSKnpcWW+I2gGI5P9bXgzcP1zQaHxC229MEtRoSNQ4aQ0BbbDIVuCIvUwk0YGpS+FihwIzxkW63egXCLY6mAkt4WEWxpmQqDReobauHWqXVybAgjkdfW8ADk4rS3YG7MIYq08IvmZB15glVwSxv3e+JQ7Vtb8a+HS+K9pzUSAdMxeK+V26NIa2vkjXiPg+BgpNUJgGUTRfDgysVNm3U2MEKt2figkwcTbIAJW4KjkHvAVHEBAPISvvXY5spOcIJB9CGeEFlw1i0n0as72hUGSwSYDM+2wdFGeBTl8A0Rw48RzDlqJd/IZp3k1mny4UMRCAvhoUiAAA+Gg3ZuCAaXRDqkPlxasgTMyhMegmHDcNBOAKOGJ3IBbZ87BswXPg1Hyl8NwVmv3lQd4mZ9wKn0U/HBdxwrMHX04NSU2yZweWpq8F6OobDS8uKGMGZoqDCjOzscp6YszyBb0DI/ETtiyKqO+R8xFQ7mxSxZmlVussBUbQlxrRpwXB+wNFnfCgN9hRjan/W5XGhpKSUqm+bOhujjryx6uQ1zrBjYsUkRwbOCIW0Br2oSLZar0Bg68OGRcvtZW7du3fJLbI0dPRpxm6AbWRMUDLmMUxahg639xeJzIRzqPdbbnv1Z7OGhPXv25MTmYwwcqVwEJ3OCe8DZAsdLnMg61Z5W3uBBsspptkCr3hDN27d+6cLh3MDJX+bgJIYPvHVy9ORKGB3FdHSrigO9ptF8gBtmSwKjoRGRzykXzj/NaGi0trZWbAfEp7KerhWtw5EyG/gtB0CpXjrMOwGKdgFgwz7btn/LwmH7rxBOK5tjcMy2SRy5xmoqaDexV8Cgq41dEsJhcSzv07C6OnawtJ6RYqS42MmhJwfBsWXM+hCa/QjvfnhUrM4W54tXw2qwMuXhqiF4FE3Vijhw4OAKGLTglt0IBVcA3tdgidpi68ojABtX1eXqz6pu/nGqGMYeDxEO/N0WOO5vjRQH9sKMofkes8z446G4S/Jjc1mIQq42PfzRaYHlP75dwMdzzqO8BR45LXtKQP8ysBJXLV9wKcVgXT82e/Lw48OyPQmrq7cu/dg3ZBuQoRbnQ1zOygoX6dyS4waUxJcoskxu5zQrsSNcrDz7V4gf+8v7JPxXv/vsJX2PBVQ9qlaVoFClaVRLS0sxjiz0/6usTD2lwbT1gafRlb+BDWxgAxvYwAY8jP8Djp8bIg5vNaQAAAAASUVORK5CYII="
-            alt="Python Programming"
-          />
-          <p>Python Programming</p>
-        </div>
-        <div class="course-card">
-          <img
-            src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/Data%20Science%201600x800.jpg"
-            alt="Data Science"
-          />
-          <p>Data Science</p>
-        </div>
-        <div class="course-card">
-          <img src="https://shorturl.at/7a5Pa" alt="AI Foundations" />
-          <p>AI Foundations</p>
-        </div>
-      </div>
-    </section>
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-12 text-center">Favorite Topics To Learn</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="course-card rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Business Analysis" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Business Analysis</h3>
+                            <p class="text-gray-400 mb-4">Learn key business analysis skills</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-orange-500">$0.00</span>
+                                <button class="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition duration-300">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Data Science" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Data Science</h3>
+                            <p class="text-gray-400 mb-4">Master data analysis and visualization</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-orange-500">$0.00</span>
+                                <button class="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition duration-300">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Digital Marketing" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Digital Marketing</h3>
+                            <p class="text-gray-400 mb-4">Learn effective online marketing strategies</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-orange-500">$0.00</span>
+                                <button class="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition duration-300">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1415&q=80" alt="Business Model" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Business Model</h3>
+                            <p class="text-gray-400 mb-4">Develop successful business models</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-orange-500">$0.00</span>
+                                <button class="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition duration-300">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <div class="team">
-      <h2>Meet the Team</h2>
-      <div class="team-container">
-        <div class="team-card">
-          <div class="card-image">
-            <img
-              src="https://omarkeita.tech/images/omar.png"
-              alt="Team Member Picture"
-            />
-          </div>
-          <div class="card-content">
-            <h2 class="name">Omar Keita</h2>
-            <p class="title">Founder</p>
-            <p class="degree">Bsc. Software Engineering</p>
-          </div>
+    <footer class="bg-slate-800 py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">MarAcademy</h3>
+                    <p class="text-gray-400">Empowering learners worldwide with quality education and innovative courses.</p>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+                    <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500">Courses</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+                    <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+                    <p class="text-gray-400">123 Education St, Learning City, 12345</p>
+                    <p class="text-gray-400">Phone: (123) 456-7890</p>
+                    <p class="text-gray-400">Email: info@maracademy.com</p>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/4">
+                    <h4 class="text-xl font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-400">&copy; 2023 MarAcademy. All rights reserved.</p>
+            </div>
         </div>
-        <div class="team-card">
-          <div class="card-image">
-            <img
-              src="https://media.licdn.com/dms/image/v2/D5603AQHOVrQhZwjl_g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706015710055?e=1730937600&v=beta&t=AUKjCf24HGzDqzSZ1rn_oACgIDAEtw7W3pDbnkYqUHQ"
-              alt="Team Member Picture"
-            />
-          </div>
-          <div class="card-content">
-            <h2 class="name">Bubacarr Bah</h2>
-            <p class="title">Marketing and Growth Strategist</p>
-            <p class="degree">Bsc. Commerce</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <ul class="footer-links">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#mission">Mission & Vision</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="footer-contact">
-        <p>Email: support@maracademy.org | Phone: +123 456 7890</p>
-      </div>
     </footer>
-
-    <script>
-      window.addEventListener("scroll", function () {
-        const header = document.querySelector("header");
-        if (window.scrollY > 100) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-    </script>
-  </body>
+</body>
 </html>
