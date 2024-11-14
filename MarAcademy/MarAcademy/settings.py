@@ -12,10 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
+# SECRET_KEY = 'ibetutoguess'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-
+# DEBUG = True
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
@@ -26,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
     'ourusers',
     'courses',
     'assignments',
@@ -42,8 +45,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
 ROOT_URLCONF = "MarAcademy.MarAcademy.urls"
+# ROOT_URLCONF = "MarAcademy.urls"
 
 TEMPLATES = [
     {
@@ -78,6 +81,8 @@ DATABASES = {
 database_url = os.environ.get("DATABASE_URL")
 
 DATABASES['default'] = dj_database_url.parse(database_url)
+
+DATABASES['default'] = dj_database_url.parse('postgresql://maracademy_user:BJrmYZcFWg5WVHGsWBh6TzIbfcnWxfU8@dpg-csqupkt2ng1s73bqr4m0-a.oregon-postgres.render.com/maracademy')
 
 #
 
