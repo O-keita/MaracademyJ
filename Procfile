@@ -1,1 +1,1 @@
-web: gunicorn MarAcademy.wsgi:application
+web: gunicorn MarAcademy.MarAcademy.wsgi:application
