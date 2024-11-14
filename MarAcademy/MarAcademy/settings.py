@@ -63,7 +63,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "MarAcademy.wsgi.application"
 
-DJANGO_SETTINGS_MODULE=MarAcademy.settings
+DJANGO_SETTINGS_MODULE=MarAcademy.MarAcademy.settings
 
 
 # Database
