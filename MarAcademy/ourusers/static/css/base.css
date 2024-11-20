@@ -457,41 +457,72 @@ min-height: 90vh;
 }
 
 
-.dashboard-main h2{
-
-  font-size: 24px;
- 
-}
-
-.module-list{
-
-  width : 100%;
+.dashboard-main {
+  max-width: 1200px;
   margin: 0 auto;
-  
+  padding: 20px;
+}
+
+h1, h2 {
+  color: var(--color-dark-blue);
+}
+
+.course-description {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.module-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.module-item {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.module-item a {
   display: flex;
-  align-items: center;
-  justify-content:space-evenly;
-  flex-wrap: wrap;
-  list-style: none;
-min-height: 40vh;
-
-}
-
-.module-list a{
+  flex-direction: column;
   text-decoration: none;
-  font-size: 20px;
-  padding: 10px 90px;
-  margin: 3%;
-  background-color: var(--dark-blue);
-  color: var(--white);
-  border-radius: 5px;
-  transition: 0.3s ease;
+  color: var(--color-dark-blue);
 }
 
-.module-list a:hover{ 
-  background-color:var(--orange);
-  transform: translateX(-5px);
+.module-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
+
+.module-item span {
+  padding: 15px;
+  font-weight: bold;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .module-list {
+    grid-template-columns: 1fr;
+  }
+
+} 
+
+
+
 
 /* LESSONS */
 
