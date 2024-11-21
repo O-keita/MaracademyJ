@@ -4,5 +4,5 @@ from .views import opportunities
 
 
 urlpatterns = [
-    path('/opportunities', opportunities, name='opportunities')
+    path('opportunities', opportunities, name='opportunities')
 ]

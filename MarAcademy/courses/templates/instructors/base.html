@@ -70,11 +70,11 @@
           </div>
           <div class="user-info">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK_mAcrV3vVhLq6HK4c1liqGV59qhOwXdEGw&s"
+              src="{{ user.get_profile_picture }}"
               alt="Default Avatar"
               class="user-avatar"
             />
-            <span>Edna Francis</span>
+            <span>{{ user.get_username }}</span>
             <i class="fas fa-chevron-down"></i>
           </div>
         </header>
