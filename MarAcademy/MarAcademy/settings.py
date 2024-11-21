@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 #comment
-# DEBUG = True
+DEBUG = True
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'assignments',
     'progress',
     'certificates',
+    'opportunities',
 ]
 
 MIDDLEWARE = [
@@ -84,7 +85,7 @@ database_url = os.environ.get("DATABASE_URL")
 
 DATABASES['default'] = dj_database_url.parse(database_url)
 
-DATABASES['default'] = dj_database_url.parse('postgresql://maracademy_user:BJrmYZcFWg5WVHGsWBh6TzIbfcnWxfU8@dpg-csqupkt2ng1s73bqr4m0-a.oregon-postgres.render.com/maracademy')
+# DATABASES['default'] = dj_database_url.parse('postgresql://maracademy_user:BJrmYZcFWg5WVHGsWBh6TzIbfcnWxfU8@dpg-csqupkt2ng1s73bqr4m0-a.oregon-postgres.render.com/maracademy')
 
 #
 

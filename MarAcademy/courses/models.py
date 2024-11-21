@@ -101,3 +101,13 @@ class Progress(models.Model):
         return f"{self.student.username} - {self.course.title} - {self.assignment or self.quiz}"
     
 
+class Opportunities(models.Model):
+    title = models.CharField(max_length=300, null=False, blank=False)
+    description = models.CharField(max_length=3000, null=False)
+    link = models.URLField(null=False, blank=False)
+    dateline = models.DateField()
+
+
+
+    def __str__(self):
+        return  f"{self.title}"

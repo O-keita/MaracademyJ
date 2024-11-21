@@ -1,0 +1,99 @@
+{% extends 'ourusers/base.html' %}
+{% block content %}
+<style>
+
+
+    :root {
+    --primary-color: #ff6b35;
+    --secondary-color: #223344;
+    --background-color: #f9fafb;
+    --text-color: #333;
+    --text-secondary: #666;
+    --border-color: #e5e7eb;
+    --sidebar-width: 240px;
+    }
+    .opportunities-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        font-family: Arial, sans-serif;
+    }
+    h1 {
+        color:var(--text-color);
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .opportunities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        gap: 20px;
+    }
+    .opportunity {
+     
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 2%;
+        transition: transform 0.3s ease;
+    }
+    .opportunity:hover {
+        transform: translateY(-5px);
+    }
+    .opportunity h2 {
+        background-color: var(--secondary-color);
+        color: #fff;
+        border-radius: 8px;
+        margin: 0;
+        padding: 15px;
+        font-size: 1.2em;
+    }
+    .opportunity-content {
+        padding: 20px;
+    }
+    .opportunity p {
+        color: #34495e;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .opportunity-link {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .opportunity-link:hover {
+        background-color: #d35400;
+    }
+    .no-opportunities {
+        text-align: center;
+        color: #7f8c8d;
+        font-style: italic;
+    }
+</style>
+
+<div class="opportunities-container">
+    {% if opportunities %}
+        <h1>Opportunities</h1>
+        <div class="opportunities-grid">
+            {% for opportunity in opportunities %}
+                <div class="opportunity">
+                    <h2>{{ opportunity.title }}</h2>
+                    <div class="opportunity-content">
+                        <p>{{ opportunity.description }}</p>
+                        <p><strong>Deadline:</strong> {{ opportunity.dateline }}</p>
+                        <a href="{{ opportunity.link }}" class="opportunity-link" target="_blank"> Apply Now</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1 class="no-opportunities">No Opportunities At This Time. Check Back Later</h1>
+    {% endif %}
+</div>
+{% endblock %}
