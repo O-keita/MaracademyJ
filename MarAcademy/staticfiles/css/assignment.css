@@ -13,6 +13,7 @@ display: flex;
 
 
 
+
 }
 
 .assignment-container h2{
@@ -29,6 +30,7 @@ display: flex;
 
 .assignment{
    
+    width: 90%;
     background-color: var(--white);
     border-radius: 8px;
     box-shadow: 0 0 10  px rgba(0, 0, 0, 0.1);
