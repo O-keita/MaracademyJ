@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
-#comment
+# comment
 # SECRET_KEY = 'ibetutoguess'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -127,3 +127,4 @@ AUTH_USER_MODEL = 'ourusers.CustomUser'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / "staticfiles"
