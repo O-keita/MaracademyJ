@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from .models import CustomUser
+from courses.models import Submission
 
 from courses.models import Course
 
@@ -62,13 +63,35 @@ def dashboard(request):
 
     user = request.user
 
-    enrolled_courses = user.enrolled_courses.count()
+    courses = user.enrolled_courses.prefetch_related('assignments')
 
+    assignments = sum(course.assignments.count() for course in courses)
+
+
+
+
+    submissions = Submission.objects.filter(student=user)
+
+    
+
+    pending = assignments - submissions.count()
+
+
+
+    context =  {'user': user,
+                 'enrolled_courses': courses.count(),
+                 'submissions': submissions.count(),
+                 'pending': pending,
+                 'submitted': submissions
+                
+                 
+                 
+                 }
 
 
 
     
-    return render(request, 'ourusers/dashboard.html', {'user': user, 'enrolled_courses': enrolled_courses})
+    return render(request, 'ourusers/dashboard.html', context)
 
 
 
