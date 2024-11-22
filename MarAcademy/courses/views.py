@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 
-from .models import Course, Module, Lesson
+from .models import Course, Module, Lesson, Assignment, Submission
 from .forms import CourseForm, ModuleForm, LessonForm
 from django.contrib.auth.decorators import login_required
 
@@ -60,7 +60,57 @@ def lesson_detail(request, pk):
 def instructor_course_list(request):
     if request.user.is_instructor:
         courses = Course.objects.filter(instructor=request.user)
-        return render(request, 'instructors/course_list.html', {'courses': courses})
+        
+
+        assignments = Assignment.objects.filter(course__in=courses)
+
+        assignments_count  = assignments.count()
+
+
+        submissions = Submission.objects.filter(assignment__in = assignments)
+
+        submissions_count = submissions.count()
+
+
+
+        enrolled_users = []
+
+        enrolled_users_names = set()
+
+
+
+        for course in courses:
+
+            students = course.enrolled_users.all()
+
+
+            enrolled_users.append(students)
+
+            for student in students[:10]:
+                enrolled_users_names.add(student.username)
+
+
+        reviewed = []
+
+        for submission in submissions:
+
+            if submission.grade != "Not Yet Graded":
+                reviewed.append(submission)
+
+
+        context = {
+            'courses': courses,
+              'assignment_count': assignments_count,
+                "enrolled_users": len(enrolled_users),
+                "submission_count" : submissions_count,
+                "reviewed": len(reviewed),
+
+                "students": list(enrolled_users_names)
+
+                }
+
+
+        return render(request, 'instructors/course_list.html', context )
     else:
         return redirect('courses:course_list')
 

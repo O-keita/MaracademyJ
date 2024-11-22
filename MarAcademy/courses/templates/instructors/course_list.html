@@ -6,27 +6,34 @@
 {% block content %}
 <h2>Dashboard</h2>
 <div class="stats-grid">
+
+  
+
   <div class="stat-card">
-    <div class="stat-number">127</div>
-    <div class="stat-label">Received</div>
+    <div class="stat-number">{{ courses.count}}</div>
+    <div  class="stat-label">Courses</div>
+  </div>
+
+ 
+  <div class="stat-card">
+    <div class="stat-number">{{assignment_count}}</div>
+    <div class="stat-label">Assignments</div>
   </div>
   <div class="stat-card">
-    <div class="stat-number">58</div>
-    <div class="stat-label">Yet to Review</div>
+    <div class="stat-number">{{submission_count}}</div>
+    <div class="stat-label"> Submissions</div>
   </div>
   <div class="stat-card">
-    <div class="stat-number">42</div>
-    <div class="stat-label">Pending Review</div>
+    <div class="stat-number">{{reviewed}}</div>
+    <div class="stat-label">Reviewd </div>
   </div>
   <div class="stat-card">
-    <div class="stat-number">25</div>
-    <div class="stat-label">Reviewed</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">5</div>
-    <div class="stat-label">Reports Generated</div>
+    <div class="stat-number">{{enrolled_users}}</div>
+    <div class="stat-label">Students</div>
   </div>
 </div>
+
+
 
 <div class="grid-2-1">
   <div class="card">
@@ -68,79 +75,37 @@
 
   <div class="card">
     <div class="card-header">
-      <h3>Students Performance</h3>
+      <h3>Students</h3>
       <button>View All Students</button>
     </div>
     <div class="student-list">
+
+
       <div class="student-row">
-        <div class="student-avatar">OJ</div>
-        <div class="student-info">
-          <div>Oliver James</div>
-          <div class="text-secondary">G1 / Class A</div>
-        </div>
-        <div class="circular-progress" data-progress="97">
-          <svg width="60" height="60">
-            <circle class="progress-bg" cx="30" cy="30" r="25"></circle>
-            <circle class="progress-fill" cx="30" cy="30" r="25"></circle>
-          </svg>
-          <span class="progress-text">7%</span>
-        </div>
+  
+
+
+      <div class="student-info">
+        {% for student in students %}
+          <div>{{student}}</div>   
+          {% endfor %} 
       </div>
-      <div class="student-row">
-        <div class="student-avatar">DP</div>
-        <div class="student-info">
-          <div>David Peter</div>
-          <div class="text-secondary">G1 / Class A</div>
-        </div>
-        <div class="circular-progress" data-progress="95">
-          <svg width="60" height="60">
-            <circle class="progress-bg" cx="30" cy="30" r="25"></circle>
-            <circle class="progress-fill" cx="30" cy="30" r="25"></circle>
-          </svg>
-          <span class="progress-text">95%</span>
-        </div>
+
+    
+
       </div>
-      <div class="student-row">
-        <div class="student-avatar">LP</div>
-        <div class="student-info">
-          <div>Lily Paul</div>
-          <div class="text-secondary">G1 / Class B</div>
-        </div>
-        <div class="circular-progress" data-progress="92">
-          <svg width="60" height="60">
-            <circle class="progress-bg" cx="30" cy="30" r="25"></circle>
-            <circle class="progress-fill" cx="30" cy="30" r="25"></circle>
-          </svg>
-          <span class="progress-text">12%</span>
-        </div>
-      </div>
+
+      
     </div>
   </div>
 </div>
 
-<div class="card">
-  <div class="card-header">
-    <h3>My Notes</h3>
-    <button>Add Notes</button>
-  </div>
-  <div class="note-item">
-    <div class="note-icon"><i class="fas fa-sticky-note"></i></div>
-    <div class="note-content">
-      <div class="note-title">Prepare Questions for Unit Test</div>
-      <div class="text-secondary">Finalize the questions for Unit Test for Grade 9 Class A</div>
-    </div>
-    <div class="note-date">03 Nov 2023</div>
-  </div>
-  <div class="note-item">
-    <div class="note-icon"><i class="fas fa-bullhorn"></i></div>
-    <div class="note-content">
-      <div class="note-title">Announcements to Students</div>
-      <div class="text-secondary">Announce important updates to the students of Class B</div>
-    </div>
-    <div class="note-date">05 Nov 2023</div>
-  </div>
-  <a href="#" class="view-all">View All Notes</a>
-</div>
+
+
+
+
+
+
 {% endblock %}
 
 {% block extra_js %}
