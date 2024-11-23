@@ -106,6 +106,7 @@ class Opportunities(models.Model):
     description = models.CharField(max_length=3000, null=False)
     link = models.URLField(null=False, blank=False)
     dateline = models.DateField()
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 

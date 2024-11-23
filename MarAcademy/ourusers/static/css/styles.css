@@ -323,8 +323,8 @@ body {
 
 .course-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
+  justify-content: flex-start;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -348,7 +348,7 @@ body {
 }
 
 .btn-delete {
-  background-color: #dc3545;
+  background-color: var(--primary-color);
   color: white;
   border: none;
 }
@@ -375,94 +375,111 @@ footer {
   color: white;
 }
 
-/* Course Form Styles */
+/* Form */
 .form-container {
-  background-color: white;
-  width: 80%;
   border-radius: 8px;
   padding: 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 2rem auto;
+ 
+  margin-bottom: 2rem;
 }
 
 .form-container h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
   color: var(--secondary-color);
+  margin-bottom: 20px;
 }
 
 .form-container form {
-  width: 666px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.form-container form p {
-  margin-bottom: 1rem;
-}
-
-.form-container form label {
-  display: block;
-  max-width: 900px;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--text-color);
-}
-
- form input[type="text"],
- form input[type="email"],
- form input[type="password"],
- form textarea,
- form select {
+.form-container form input[type="text"],
+.form-container form input[type="email"],
+.form-container form input[type="password"],
+.form-container form textarea,
+.form-container form select,
+input[type="text"],
+input[type="file"],
+textarea {
   width: 100%;
   padding: 0.5rem;
+  margin-bottom: 10px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
 }
 
-.form-container form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
- 
 .btn-save {
   background-color: var(--primary-color);
   color: white;
+  padding: 10px 15px;
   border: none;
-  padding: 0.75rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
   transition: background-color 0.3s ease;
 }
 
-.form-container button[type="submit"]:hover,
-.form-container .btn:hover {
-  background-color: #e85a2a;
+.btn-save:hover {
+  background-color: var(--secondary-color);
 }
 
-.form-container a {
-  display: inline-block;
-  margin-top: 1rem;
-  color: var(--text-secondary);
-  text-decoration: none;
+.form-container ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.form-container a:hover {
-  text-decoration: underline;
+.form-container li {
+  background-color: var(--background-color);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.side-by-side {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.requirements,
+.resources {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.requirements h2,
+.resources h2 {
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.requirements ul,
+.resources ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.requirements li,
+.resources li {
+  background-color: var(--background-color);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
 }
 
 /* Modules */
 .modules {
-  margin-top: 2rem;
   background-color: white;
   border-radius: 8px;
   padding: 2rem;
@@ -478,11 +495,12 @@ footer {
 
 .btn-add {
   background-color: var(--secondary-color);
+  color: white;
   margin-bottom: 1rem;
 }
 
 .btn-add:hover {
-  background-color: #1a2836;
+  background-color: var(--primary-color);
 }
 
 .modules ul {
@@ -490,14 +508,9 @@ footer {
   padding: 0;
 }
 
-
-
-
-
 .module, .assignment-btn {
   display: block;
   padding: 0.75rem 1rem;
-
   border: 1px solid var(--border-color);
   border-radius: 4px;
   margin-bottom: 0.5rem;
@@ -506,37 +519,74 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-
 .module {
-
   background-color: var(--background-color);
   color: var(--text-color);
-  text-decoration: none;
-  transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-
 }
 
-.assignment-btn{
+.assignment-btn {
   background-color: var(--primary-color);
-  color: var(--background-color);
-
+  color: white;
 }
-
 
 .assignment-btn:hover {
-  background-color: #e85a2a;
+  background-color: var(--secondary-color);
 }
 
 .module:hover {
-  background-color: #e5e7eb;
+  background-color: var(--border-color);
 }
 
-/* Responsive Styles */
-@media (max-width: 850px) {
+.modules .card-header {
+  margin-bottom: 1rem;
+}
+/* Layout for larger screens */
+@media screen and (min-width: 968px) {
+  .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .side-by-side {
+    flex-direction: row;
+  }
+
+  .side-by-side > div {
+    flex: 1;
+  }
+
+  .side-by-side .requirements ul li, .side-by-side .resources ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-container,
+  .side-forms {
+    flex: 1;
+  }
+
+  .side-forms > div {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 867px) {
+  .form-container,
+  .side-forms > div {
+    margin-bottom: 20px;
+  }
+
   .sidebar {
     transform: translateX(-100%);
     width: 100%;
@@ -575,4 +625,98 @@ footer {
 }
 
 
+/* opportunity */
+/* Opportunities Container */
+.opportunity-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
+/* Title */
+.opportunity-container .title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Opportunities List */
+.opportunities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Opportunity Item */
+.opportunity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.opportunity-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Opportunity Title */
+.opportunity-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Buttons */
+.btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+.update-btn {
+  background-color: var(--primary-color); /* MarAcademy primary color */
+  border: none;
+}
+
+.update-btn:hover {
+
+  background-color: #c73f0e;
+
+}
+
+.create-btn {
+  display: block;
+  width: auto;
+  margin: 20px auto;
+  background-color: var(--secondary-color); /* Green for Create */
+  border: none;
+  text-align: center;
+  padding: 12px 30px;
+}
+
+.create-btn:hover {
+  background-color: #223344
+
+}
+
+/* No Opportunities Message */
+.no-opportunities {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 30px;
+}

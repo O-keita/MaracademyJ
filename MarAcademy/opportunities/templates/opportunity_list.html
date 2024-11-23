@@ -1,0 +1,28 @@
+{% extends 'instructors/base.html' %}
+
+{% block content %}
+<div class="opportunity-container">
+    <h1 class="title">Opportunities</h1>
+
+
+    <a href="{% url 'create_opportunity' %}" class="btn create-btn">
+        + Create Opportunity
+    </a>
+
+    {% if opportunities %}
+        <div class="opportunities-list">
+            {% for opportunity in opportunities %}
+                <div class="opportunity-item">
+                    <h2 class="opportunity-title">{{ opportunity.title }}</h2>
+                    <a href="{% url 'update_opportunity' opportunity.pk %}" class="btn update-btn">
+                        Update
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-opportunities">No opportunities have been created yet.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

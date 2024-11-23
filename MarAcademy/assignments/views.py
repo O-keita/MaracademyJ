@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from courses.models import Assignment, AssignmentRequirement, Course, AssignmentResources, Submission, Progress
-from .forms import AssignmentForm, AssignmentRequirementForm, SubmissionForm, GradeSubmissionForm
+from .forms import AssignmentForm, AssignmentRequirementForm, SubmissionForm, GradeSubmissionForm, AssignmentResourseForm
 # Create your views here.
 
 
@@ -52,39 +52,90 @@ def create_assignments(request, course_id):
                 assignment = form.save(commit=False)
                 assignment.course = course
                 assignment.save()
-                return redirect("assignments", course_id=assignment.course.pk )
+                return redirect("courses:course_update", pk=course.pk )
         else:
             form  =  AssignmentForm()
 
             return render(request, 'create.html', {"form":form, 'course':course})
     
-    return redirect('assignment')
+    return redirect('assignment', course_id=course.pk)
+
+
 
 @login_required
-def requirements(request, assignment_id):
+def update_assignment(request, course_id, assignment_id):
+
     if request.user.is_instructor:
 
-        assignment = get_object_or_404(Assignment, pk=assignment_id)
+        course = get_object_or_404(Course, pk=course_id, instructor=request.user)
+        assignment = get_object_or_404(Assignment, pk=assignment_id, course=course)
+        requirements = AssignmentRequirement.objects.filter(assignment=assignment)
+        resourse = AssignmentResources.objects.filter(assignment=assignment)
+
+        assignment_form = AssignmentForm(request.POST, None, instance=assignment)
+        requirement_form = AssignmentRequirementForm(request.POST, None)
+        resource_form = AssignmentResourseForm(request.POST, None)
+
 
         if request.method == 'POST':
 
-            form = AssignmentRequirementForm
 
-            if form.is_valid():
+            if 'save_assignment' in request.POST and assignment_form.is_valid():
 
-                requirement = form.save(commit=False)
-                requirement.assignments = assignment
+                assignment_form.save()
+
+                return redirect("courses:course_update", pk=course.pk)
+            
+            if 'add_requirement' in request.POST and requirement_form.is_valid():
+                requirement = requirement_form.save(commit=False)
+                requirement.assignment = assignment
                 requirement.save()
-                return redirect("requirements", pk=assignment.pk)
-        else:
-
-            form = AssignmentRequirementForm()
-            return render(request, 'requirements.html', {'form':form})
+                return redirect(request.path)
             
 
-    return render(request, 'create.html')
+            if 'add_resource' in request.POST and resource_form.is_valid():
+
+                resourse = resource_form.save(commit=False)
+                resourse.assignment = assignment
+                resourse.save()
+                return redirect(request.path)
 
 
+            
+
+        else:
+            assignment_form  = AssignmentForm(instance=assignment)
+
+
+        context = {
+            "assignment_form": assignment_form,
+            "requirement_form": requirement_form,
+            "resource_form": resource_form,
+            "requirements": requirements,
+            "assignment": assignment,
+            "resources": resourse
+        }
+
+        
+
+        return render(request, 'create.html', context)
+    
+    return redirect('assignments')
+
+@login_required
+def delete_assignment(request, course_id, assignment_id):
+
+    if request.user.is_instructor:
+
+        course = get_object_or_404(Course, pk=course_id)
+
+        assignment = get_object_or_404(Assignment, pk=assignment_id, course=course )
+
+
+        assignment.delete()
+        return redirect('courses:course_update', pk=course_id)
+    
+    return redirect('courses:course_list')
 
 
 @login_required
@@ -117,6 +168,10 @@ def submission(request, assignment_id):
     else:
         form = SubmissionForm()
     return render(request, 'submit_assignment.html', {'assignment': assignment, 'form': form})
+
+
+
+
 
 
 # def grading(request, submission_id):

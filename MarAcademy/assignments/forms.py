@@ -1,5 +1,5 @@
 from django import forms
-from courses.models import Assignment, AssignmentRequirement, Submission
+from courses.models import Assignment, AssignmentRequirement, Submission, AssignmentResources
 
 
 
@@ -9,7 +9,7 @@ class AssignmentForm(forms.ModelForm):
     
         model = Assignment
 
-        fields =['title', 'description', "due_date"]
+        fields =['title', 'points', 'description', "due_date"]
 
 
 class AssignmentRequirementForm(forms.ModelForm):
@@ -18,6 +18,14 @@ class AssignmentRequirementForm(forms.ModelForm):
         model = AssignmentRequirement
 
         fields = ["requirement_text"]
+
+
+class AssignmentResourseForm(forms.ModelForm):
+
+    class Meta:
+        model =AssignmentResources
+
+        fields = ['text', 'resource_url']
 
 class SubmissionForm(forms.ModelForm):
     # Ensure the link field is required

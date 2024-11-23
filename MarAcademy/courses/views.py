@@ -140,6 +140,8 @@ def course_update(request, pk):
 
         modules = course.modules.all() 
 
+        assignments = Assignment.objects.filter(course=course)
+
         if request.method == 'POST':
             form = CourseForm(request.POST, request.FILES, instance=course)
             if form.is_valid():
@@ -147,7 +149,7 @@ def course_update(request, pk):
                 return redirect('courses:course_list')
         else:
             form = CourseForm(instance=course)
-        return render(request, 'instructors/course_form.html', {'form': form, 'modules': modules})
+        return render(request, 'instructors/course_form.html', {'form': form, 'modules': modules, "assignments":assignments})
 
     else:
         return redirect('courses:course_list')

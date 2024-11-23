@@ -1,9 +1,54 @@
-{% extends 'instructors/base.html' %} {% block content %}
-<div class="form-container">
-    <h1>Add Assignment</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit" class="btn-save">Save</button>
-    </form>
+{% extends 'instructors/base.html' %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="form-container">
+        <h1>Update Assignment</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ assignment_form.as_p }}
+            <button type="submit" name="save_assignment" class="btn-save">Save Assignment</button>
+        </form>
+    </div>
+
+    <div class="side-by-side">
+        <div class="requirements">
+            <h2>Requirements</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ requirement_form.as_p }}
+                <button type="submit" name="add_requirement" class="btn-save">Add Requirement</button>
+            </form>
+
+            {% if requirements %}
+            <ul>
+                {% for requirement in requirements %}
+                <li>{{ requirement.requirement_text }} <a href=""><i class="fas fa-times"></i></a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No requirements have been added.</p>
+            {% endif %}
+        </div>
+
+        <div class="resources">
+            <h2>Resources</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ resource_form.as_p }}
+                <button type="submit" name="add_resource" class="btn-save">Add Resource</button>
+            </form>
+
+            {% if resources %}
+            <ul>
+                {% for resource in resources %}
+                <li>{{ resource.text }} <a href=""><i class="fas fa-times"></i></a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No resources have been added.</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
+

@@ -1,33 +1,41 @@
-{% extends 'instructors/base.html' %} {% block content %}
-<div class="form-container">
-  <h1>
-    {% if form.instance.pk %} Edit Module {% else %} Add Module {% endif %}
-  </h1>
+{% extends 'instructors/base.html' %}
+{% block content %}
+<div class="content-wrapper">
+  <div class="form-container">
+    <h1>{% if form.instance.pk %}Edit Module{% else %}Add Module{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-actions">
+        <button type="submit" class="btn-save">Save</button>
+        <a href="{% url 'courses:course_list' %}" class="btn">Cancel</a>
+      </div>
+    </form>
+  </div>
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn-save">Save</button>
-    <a href="{% url 'courses:course_list' %}">Cancel</a>
-  </form>
+  {% if form.instance.pk %}
+  <div class="card lessons">
+    <div class="card-header">
+      <h2>Lessons for {{ form.instance.title }}</h2>
+      <a href="{% url 'courses:lesson_create' module.pk %}" class="btn btn-add">Add Lesson</a>
+    </div>
+    {% if lessons %}
+    <ul class="lesson-list">
+      {% for lesson in lessons %}
+      <li>
+        <a href="{% url 'courses:lesson_update' lesson.pk %}" class="module">
+          {{ lesson.title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="empty-state">
+      <i class="fas fa-book"></i>
+      <p>No lessons available for this module.</p>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
 </div>
-
-{% if form.instance.pk %}
-<div class="lessons">
-  <a href="{% url 'courses:lesson_create' module.pk %}" class="btn btn-add"
-    >Add Lesson</a
-  >
-  <h3>Lessons for {{ form.instance.title }}</h3>
-
-  <ul>
-    {% for lesson in lessons %}
-    <li>
-      <a href="{% url 'courses:lesson_update' lesson.pk %}" class="lesson"
-        >{{ lesson.title }}</a
-      >
-    </li>
-    {% empty %}
-    <li>No lessons available for this module.</li>
-    {% endfor %}
-  </ul>
-</div>
-{% endif %} {% endblock %}
+{% endblock %}

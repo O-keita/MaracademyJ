@@ -1,36 +1,58 @@
-{% extends 'instructors/base.html' %} {% block content %}
-<div class="form-container">
-  <h1>{% if form.instance.pk %}Edit Course{% else %}Add Course{% endif %}</h1>
+{% extends 'instructors/base.html' %}
+{% block content %}
+<div class="content-wrapper">
+  <div class="form-container card">
+    <h1>{% if form.instance.pk %}Edit Course{% else %}Add Course{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="course-actions">
+        <button type="submit" class="btn-save">Save</button>
+        <a href="{% url 'courses:course_list' %}" class="btn">Cancel</a>
+      </div>
+    </form>
+  </div>
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn-save">Save</button>
-  </form>
+  {% if form.instance.pk %}
+  <div class="modules card">
+    <div class="card-header">
+      <h2>Modules for {{ form.instance.title }}</h2>
+      <a href="{% url 'courses:module_create' form.instance.pk %}" class="btn btn-add">Add Module</a>
+    </div>
+    {% if modules %}
+      <ul>
+        {% for module in modules %}
+          <li>
+            <a href="{% url 'courses:module_update' module.pk %}" class="module">{{ module.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="empty-state">
+        <i class="fas fa-folder-open"></i>
+        <p>No modules available for this course.</p>
+      </div>
+    {% endif %}
 
-  <a href="{% url 'courses:course_list' %}">Cancel</a>
+    <div class="card-header">
+      <h2>Assignments for {{ form.instance.title }}</h2>
+      <a href="{% url 'create_assignment' form.instance.pk %}" class="btn btn-add">Create Assignment</a>
+    </div>
+    {% if assignments %}
+      <ul>
+        {% for assignment in assignments %}
+          <li>
+            <a href="{% url 'update_assignment' assignment.course.pk assignment.pk %}" class="module">{{ assignment.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="empty-state">
+        <i class="fas fa-tasks"></i>
+        <p>No assignments available for this course.</p>
+      </div>
+    {% endif %}
+  </div>
+  {% endif %}
 </div>
-
-{% if form.instance.pk %}
-<!-- Only show this section if the course already exists (i.e., pk is not None) -->
-<div class="modules">
-  <h2>Modules for {{ form.instance.title }}</h2>
-  <a
-    href="{% url 'courses:module_create' form.instance.pk %}"
-    class="btn btn-add"
-    >Add Module</a
-  >
-  <ul>
-    {% for module in modules %}
-    <a href="{% url 'courses:module_update' module.pk %}" class="module"
-      >{{ module.title }}</a
-    >
-    {% empty %}
-    <li>No modules available for this course.</li>
-    {% endfor %}
-  </ul>
-
-  <a href="{% url 'create_assignment' form.instance.pk %}" class="assignment-btn">
-    Create Assignment
-  </a>
-</div>
-{% endif %} {% endblock %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'instructors/base.html' %}
+{% block content %}
+
+<div class="form-container card">
+    <h1>Update {{opportunity.title}}</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="course-actions">
+        <button type="submit" class="btn-save">Save</button>
+        <a href="{% url 'opportunity_list' %}" class="btn">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+{%  endblock %}
