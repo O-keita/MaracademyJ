@@ -70,6 +70,30 @@ DATABASES = {
 }
 ```
 
+### 5. Apply Migrations
+```bash
+python manage.py migrate
+```
+
+### 6. Create a Superuser
+```bash
+python manage.py createsuperuser
+```
+
+### 7. Collect Static Files
+```bash
+python manage.py collectstatic
+```
+### 8. python manage.py collectstatic
+```bash
+python manage.py collectstatic
+```
+### 9. Run the Development Server
+```bash
+python manage.py runserver
+```
+
+
 
 
 
