@@ -53,6 +53,24 @@ pip install -r requirements.txt
    psql -U postgres
    ```
 
+3. Create a new database for the project
+4. Update the DATABASES configuration in your project's settings.py file:
+python
+Copy code
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'maracademy',
+        'USER': 'maradmin',
+        'PASSWORD': 'securepassword',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+
+
 
 
 
