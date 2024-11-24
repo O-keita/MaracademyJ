@@ -87,6 +87,7 @@ python manage.py collectstatic
 ### 8. python manage.py collectstatic
 ```bash
 python manage.py collectstatic
+
 ```
 ### 9. Run the Development Server
 ```bash
@@ -94,6 +95,33 @@ python manage.py runserver
 ```
 
 Visit ***http://127.0.0.1:8000/*** in your browser to view the app.
+
+---
+## Deployment
+### Steps for Render Deployment
+#### 1. ***Set Up a Repository***: Push your project to GitHub:
+
+```bash
+git add .
+git commit -m "Initial deployment"
+git push origin main
+```
+
+#### 2.*** Configure Environment Variables ***: Add a ```.env``` file to store sensitive data. Example:
+```env
+DEBUG=False
+SECRET_KEY=your-secret-key
+DATABASE_URL=postgres://user:password@host:port/maracademy
+```
+#### 3. Collect Static Files:
+```bash
+python manage.py collectstatic
+```
+#### 4. Deploy on Render:
+- Link your repository to a new Render service.
+- Specify Python as the environment.
+- Set environment variables in the Render dashboard.
+- Deploy the app.
 
 
 
