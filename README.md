@@ -49,7 +49,7 @@ pip install -r requirements.txt
 #### For PostgreSQL:
 1. Ensure that PostgreSQL is installed and running on your system.
 2. Log in to your PostgreSQL database:
-   ```bash
+   ```sql
    psql -U postgres
    ```
 
