@@ -1,4 +1,4 @@
-1234
+
 # MarAcademy
 
 MarAcademy is an innovative online learning platform designed to provide free coding courses, career development resources, and scholarship opportunities for high school students. It empowers learners to gain programming skills, track their progress, and access certifications, all in a user-friendly environment.
@@ -20,7 +20,6 @@ To set up and run this project, you will need:
 - Python 3.11+
 - Django 5.1.1
 - PostgreSQL (preferred; SQLite for development is supported)
-- Node.js (optional, for frontend dependencies)
 - Git for version control
 - A virtual environment tool (e.g., `venv`)
 
@@ -32,3 +31,28 @@ To set up and run this project, you will need:
 ```bash
 git clone https://github.com/your-username/maracademy.git
 cd maracademy
+```
+
+### 2. Create and Activate a Virtual Environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+### 3.  Install Backend Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure the Database
+
+#### For PostgreSQL:
+1. Ensure that PostgreSQL is installed and running on your system.
+2. Log in to your PostgreSQL database:
+   ```bash
+   psql -U postgres
+   ```
+
+
+
+
