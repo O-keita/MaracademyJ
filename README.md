@@ -99,7 +99,7 @@ Visit ***http://127.0.0.1:8000/*** in your browser to view the app.
 ---
 ## Deployment
 ### Steps for Render Deployment
-#### 1. ***Set Up a Repository***: Push your project to GitHub:
+#### 1. Set Up a Repository: Push your project to GitHub:
 
 ```bash
 git add .
@@ -123,6 +123,28 @@ python manage.py collectstatic
 - Set environment variables in the Render dashboard.
 - Deploy the app.
 
+
+---
+## Project Structure
+
+```plaintext
+maracademy/
+├── courses/             # App for course management
+├── instructors/         # Instructor management features
+├── static/              # Static assets (CSS, JS, images)
+├── templates/           # HTML templates
+├── manage.py            # Django management script
+├── requirements.txt     # Python dependencies
+└── README.md            # Documentation
+```
+---
+## Contact
+For inquiries or support, reach out to:
+
+#### Omar Keita
+
+GitHub: omar-keita
+Email: o.keita@alustudent
 
 
 
