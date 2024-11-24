@@ -159,7 +159,7 @@ For inquiries or support, reach out to:
 
 #### Omar Keita
 
-GitHub: omar-keita
+GitHub: 0-keita
 Email: o.keita@alustudent
 
 
