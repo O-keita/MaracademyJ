@@ -55,8 +55,9 @@ pip install -r requirements.txt
 
 3. Create a new database for the project
 4. Update the DATABASES configuration in your project's settings.py file:
-python
-Copy code
+   
+```python
+   
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -67,7 +68,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+```
 
 
 
