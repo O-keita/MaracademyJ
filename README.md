@@ -107,7 +107,7 @@ git commit -m "Initial deployment"
 git push origin main
 ```
 
-#### 2.*** Configure Environment Variables ***: Add a ```.env``` file to store sensitive data. Example:
+#### 2.Configure Environment Variables: Add a ```.env``` file to store sensitive data. Example:
 ```env
 DEBUG=False
 SECRET_KEY=your-secret-key
