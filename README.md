@@ -128,14 +128,30 @@ python manage.py collectstatic
 ## Project Structure
 
 ```plaintext
-maracademy/
-├── courses/             # App for course management
-├── instructors/         # Instructor management features
-├── static/              # Static assets (CSS, JS, images)
-├── templates/           # HTML templates
-├── manage.py            # Django management script
-├── requirements.txt     # Python dependencies
-└── README.md            # Documentation
+.
+├── MarAcademy
+│   ├── assignments
+│   ├── certificates
+│   ├── courses
+│   ├── db.sqlite3
+│   ├── manage.py
+│   ├── MarAcademy
+│   ├── media
+│   ├── opportunities
+│   ├── ourusers
+│   ├── progress
+│   ├── requirements.txt
+│   ├── staticfiles
+│   └── venv
+├── README.md
+├── requirements.txt
+└── venv
+    ├── bin
+    ├── include
+    ├── lib
+    ├── lib64 -> lib
+    └── pyvenv.cfg
+
 ```
 ---
 ## Contact
