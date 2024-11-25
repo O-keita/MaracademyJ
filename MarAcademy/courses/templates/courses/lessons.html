@@ -24,13 +24,14 @@
   <div class="lesson-content">{{ lesson.content|safe }}</div>
 
   <div class="navigation">
-    {% if lesson.pk > lesson_list.first.pk %}
-    <a href="{% url 'courses:lesson_details' lesson.pk|add:-1 %}" class="nav-button prev-button">Previous Lesson</a>
+    {% if lesson != lesson_list.first %}
+      <a href="{% url 'courses:lesson_details' lesson_list|slice:':lesson_list.index(lesson)'|last %}" class="nav-button prev-button">Previous Lesson</a>
     {% endif %}
-    {% if lesson.pk < lesson_list.last.pk %}
-    <a href="{% url 'courses:lesson_details' lesson.pk|add:1 %}" class="nav-button next-button">Next Lesson</a>
+    {% if lesson != lesson_list.last %}
+      <a href="{% url 'courses:lesson_details' lesson_list|slice:lesson_list.index(lesson)|add:1|last %}" class="nav-button next-button">Next Lesson</a>
     {% endif %}
   </div>
+  
 </div>
 
 
