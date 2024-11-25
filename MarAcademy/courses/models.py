@@ -12,6 +12,7 @@ class Course(models.Model):
     enrolled_users = models.ManyToManyField(User, related_name='enrolled_courses', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
 
     def __str__(self):
         return self.title
@@ -37,6 +38,7 @@ class Lesson(models.Model):
     video_url = models.URLField(blank=True, null=True, max_length=3000)
     video_file = models.FileField(upload_to='lesson_videos/', blank=True, null=True)
     image = models.ImageField(upload_to='lesson_images/', blank=True, null=True)
+    
 
     def __str__(self):
         return self.title   

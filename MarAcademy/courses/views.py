@@ -38,27 +38,16 @@ def module_details(request, pk):
 
 @login_required
 def lesson_detail(request, pk):
-    # Fetch the current lesson
-    lesson = get_object_or_404(Lesson, pk=pk)
-    
-    # Get all lessons in the same course/module
-    lesson_list = Lesson.objects.filter(module=lesson.module).order_by('order')  # Assuming there's an 'order' field for ordering lessons
-    
-    # Find the index of the current lesson
-    lesson_index = lesson_list.index(lesson)
-    
-    # Get the previous and next lessons
-    previous_lesson = lesson_list[lesson_index - 1] if lesson_index > 0 else None
-    next_lesson = lesson_list[lesson_index + 1] if lesson_index < len(lesson_list) - 1 else None
-    
-    # Pass the lessons and navigation information to the template
-    return render(request, 'courses/lessons.html', {
-        'lesson': lesson,
-        'lesson_list': lesson_list,
-        'previous_lesson': previous_lesson,
-        'next_lesson': next_lesson,
-    })
 
+    lesson = get_object_or_404(Lesson, pk=pk)
+
+    course_id = lesson.module.course.id 
+    lesson_list = Lesson.objects.all()  
+
+    return render(request, 'courses/lessons.html',
+                   {'lesson': lesson,
+                     'lesson_list': lesson_list,
+                     'course_id': course_id})
 
 
 
